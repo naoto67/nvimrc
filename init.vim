@@ -7,6 +7,7 @@ set splitright         "画面を縦分割する際に右に開く
 set clipboard=unnamed  "yank した文字列をクリップボードにコピー
 set hls                "検索した文字をハイライトする
 set showmatch          " 括弧入力時に対応する括弧を表示 (noshowmatch:表示しない)
+set noswapfile         " swap file を作らない
 autocmd BufWritePre * :%s/\s\+$//ge " 行末の無駄な空白を削除
 
 colorscheme delek
@@ -15,10 +16,15 @@ colorscheme delek
 " :so $VIMRUNTIME/syntax/hitest.vim 現在の色設定の確認
 " temp 以下のterm_color.plを実行するとctermfg が調べられるよ
 autocmd ColorScheme * highlight LineNr ctermfg=226 guifg=#ffff00
+
+" html color scheme
 autocmd ColorScheme * highlight htmlTagName ctermfg=226
 autocmd ColorScheme * highlight htmlTag ctermfg=14
 autocmd ColorScheme * highlight htmlEndTag ctermfg=14
 autocmd ColorScheme * highlight htmlArg ctermfg=154
+
+" ruby color scheme
+autocmd ColorScheme * highlight rubyComment ctermfg=50
 
 " 括弧類を勝手に閉じるマン
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
@@ -36,7 +42,28 @@ Plug 'leafOfTree/vim-vue-plugin'
 
 " html emmet
 Plug 'mattn/emmet-vim'
+
+" snippet
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+
+Plug 'Shougo/deoplete-rct'
+
 call plug#end()
 
 " emmetのキーボードバインディング
 let g:user_emmet_leader_key = "<C-f>"
+
+" snippet のキーバインド
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
