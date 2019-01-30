@@ -8,6 +8,8 @@ set clipboard=unnamed  "yank した文字列をクリップボードにコピー
 set hls                "検索した文字をハイライトする
 set showmatch          " 括弧入力時に対応する括弧を表示 (noshowmatch:表示しない)
 set noswapfile         " swap file を作らない
+set scrolloff=10        " スクロール時に下が見えるようにする
+set virtualedit=onemore " 行末1文字までカーソルを移動できるようにする
 autocmd BufWritePre * :%s/\s\+$//ge " 行末の無駄な空白を削除
 
 colorscheme delek
