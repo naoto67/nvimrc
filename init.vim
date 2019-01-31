@@ -10,9 +10,13 @@ set showmatch          " 括弧入力時に対応する括弧を表示 (noshowma
 set noswapfile         " swap file を作らない
 set scrolloff=10        " スクロール時に下が見えるようにする
 set virtualedit=onemore " 行末1文字までカーソルを移動できるようにする
+" set undofile            " ファイルを閉じてもundoできるようにする
 autocmd BufWritePre * :%s/\s\+$//ge " 行末の無駄な空白を削除
 
 colorscheme delek
+" ruby カラースキーマを設定
+" autocmd FileType ruby colorscheme ron
+
 " カラースキーマの微妙な設定 :highlightで詳細を確認できる
 " :help group-nameでなんかできる
 " :so $VIMRUNTIME/syntax/hitest.vim 現在の色設定の確認
@@ -25,8 +29,6 @@ autocmd ColorScheme * highlight htmlTag ctermfg=14
 autocmd ColorScheme * highlight htmlEndTag ctermfg=14
 autocmd ColorScheme * highlight htmlArg ctermfg=154
 
-" ruby color scheme
-autocmd ColorScheme * highlight rubyComment ctermfg=50
 
 " 括弧類を勝手に閉じるマン
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
@@ -69,3 +71,13 @@ let g:user_emmet_leader_key = "<C-f>"
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" ruby color scheme
+autocmd ColorScheme * highlight rubyComment ctermfg=50
+autocmd ColorScheme * highlight rubyInstanceVariable ctermfg=50
+autocmd ColorScheme * highlight rubyIdentifier ctermfg=220
+autocmd ColorScheme * highlight Identifier ctermfg=14 guifg=cyan
+
+" 補完が出ているときTABで選択可能にする
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
