@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/naoto67/Documents/rails/2.5.3/tmp/app/controllers'
-let g:netrw_dirhist_2='/Users/naoto67/Documents/rails/2.5.3/tmp/app/controllers/concerns'
-let g:netrw_dirhist_3='/Users/naoto67/Documents/rails/2.5.3/sample/.bundle'
-let g:netrw_dirhist_4='/Users/naoto67/Documents/rails/reivo/2.5.0/furusato-project/.bundle'
-let g:netrw_dirhist_5='/Users/naoto67/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/neovim-0.8.0/lib/neovim'
-let g:netrw_dirhist_6='/Users/naoto67/Documents/rails/reivo/2.5.0/furusato-project/app/models/admin/party'
