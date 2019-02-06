@@ -1,6 +1,10 @@
 let g:python3_host_prog = '/Users/naoto67/.pyenv/versions/neovim3/bin/python'
 let g:python_host_prog = $PYENV_ROOT.'/versions/neovim2/bin/python'
 
+set tags=./tags;$HOME
+nnoremap <C-]> g<C-]>
+inoremap <C-]> <ESC>g<C-]>
+
 set number             "行番号を表示
 set autoindent         "改行時に自動でインデントする
 set tabstop=2          "タブを何文字の空白に変換するか
