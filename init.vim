@@ -69,6 +69,8 @@ Plug 'Shougo/neosnippet-snippets'
 
 Plug 'Shougo/deoplete-rct'
 
+Plug 'slim-template/vim-slim'
+
 call plug#end()
 call deoplete#enable()
 
