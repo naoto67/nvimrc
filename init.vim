@@ -79,6 +79,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vim-jp/vim-go-extra'
 Plug 'zchee/deoplete-go'
 
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+
 call plug#end()
 call deoplete#enable()
 
