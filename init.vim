@@ -20,7 +20,8 @@ set virtualedit=onemore " 行末1文字までカーソルを移動できるよ�
 " set undofile            " ファイルを閉じてもundoできるようにする
 autocmd BufWritePre * :%s/\s\+$//ge " 行末の無駄な空白を削除
 
-colorscheme delek
+" colorscheme delek
+colorscheme peachpuff
 " ruby カラースキーマを設定
 " autocmd FileType ruby colorscheme ron
 
@@ -71,6 +72,13 @@ Plug 'Shougo/deoplete-rct'
 
 Plug 'slim-template/vim-slim'
 
+Plug 'ryym/vim-riot'
+
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.local/share/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'vim-jp/vim-go-extra'
+Plug 'zchee/deoplete-go'
+
 call plug#end()
 call deoplete#enable()
 
@@ -91,3 +99,8 @@ autocmd ColorScheme * highlight Identifier ctermfg=14 guifg=cyan
 " 補完が出ているときTABで選択可能にする
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
+noremap <C-h> <S-Left>
+noremap <C-l> <S-Right>
+nnoremap <C-j> <S-down>
+nnoremap <C-k> <S-up>
