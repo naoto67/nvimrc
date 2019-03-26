@@ -105,5 +105,19 @@ inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 noremap <C-h> <S-Left>
 noremap <C-l> <S-Right>
-nnoremap <C-j> <S-down>
-nnoremap <C-k> <S-up>
+noremap <C-j> <S-down>
+noremap <C-k> <S-up>
+noremap <S-h> <S-Left>
+noremap <S-l> <S-Right>
+noremap <S-j> <S-down>
+noremap <S-k> <S-up>
+
+inoremap <C-j> <down>
+inoremap <C-k> <up>
+inoremap <C-h> <left>
+inoremap <C-l> <right>
+
+imap ∆ <down>
+imap ˙ <left>
+imap ¬ <right>
+imap ˚ <up>
