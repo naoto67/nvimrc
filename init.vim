@@ -1,4 +1,4 @@
-let g:python3_host_prog = '/Users/naoto67/.pyenv/versions/neovim3/bin/python'
+let g:python3_host_prog = $PYENV_ROOT.'/.pyenv/versions/neovim3/bin/python'
 let g:python_host_prog = $PYENV_ROOT.'/versions/neovim2/bin/python'
 
 set tags=./tags;$HOME
@@ -105,12 +105,12 @@ inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 noremap <C-h> <S-Left>
 noremap <C-l> <S-Right>
-noremap <C-j> <S-down>
-noremap <C-k> <S-up>
 noremap <S-h> <S-Left>
 noremap <S-l> <S-Right>
-noremap <S-j> <S-down>
-noremap <S-k> <S-up>
+noremap <C-j> <C-d>
+noremap <C-k> <C-u>
+noremap <S-j> <C-d>
+noremap <S-k> <C-u>
 
 inoremap <C-j> <down>
 inoremap <C-k> <up>
