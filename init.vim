@@ -73,11 +73,6 @@ Plug 'slim-template/vim-slim'
 
 Plug 'ryym/vim-riot'
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.local/share/nvim/plugged/gocode/nvim/symlink.sh' }
-Plug 'vim-jp/vim-go-extra'
-Plug 'zchee/deoplete-go'
-
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
