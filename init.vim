@@ -63,7 +63,6 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-let g:deoplete#enable_at_startup = 1
 
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
@@ -82,8 +81,14 @@ Plug 'zchee/deoplete-go'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
+" python
+Plug 'deoplete-plugins/deoplete-jedi'
+
 call plug#end()
 call deoplete#enable()
+
+let g:deoplete#max_list = 15
+let g:deoplete#enable_at_startup = 1
 
 " emmetのキーボードバインディング
 let g:user_emmet_leader_key = "<C-f>"
