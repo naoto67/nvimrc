@@ -79,6 +79,11 @@ Plug 'mxw/vim-jsx'
 " python
 Plug 'deoplete-plugins/deoplete-jedi'
 
+" go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'vim-jp/vim-go-extra'
+Plug 'zchee/deoplete-go'
+
 call plug#end()
 call deoplete#enable()
 
