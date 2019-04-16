@@ -84,6 +84,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vim-jp/vim-go-extra'
 Plug 'zchee/deoplete-go'
 
+" git関連のプラグイン
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 call deoplete#enable()
 
@@ -92,6 +95,12 @@ let g:deoplete#enable_at_startup = 1
 
 " emmetのキーボードバインディング
 let g:user_emmet_leader_key = "<C-f>"
+
+" git gutter のハイライト
+let g:gitgutter_highlight_lines = 0
+highlight GitGutterAdd ctermfg=green
+highlight GitGutterAdd ctermfg=red
+set updatetime=1000
 
 " snippet のキーバインド
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -126,3 +135,5 @@ imap ∆ <down>
 imap ˙ <left>
 imap ¬ <right>
 imap ˚ <up>
+
+noremap <S-u> <C-r>
