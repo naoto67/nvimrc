@@ -103,9 +103,9 @@ highlight GitGutterAdd ctermfg=red
 set updatetime=1000
 
 " snippet のキーバインド
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+inoremap <C-m>     <Plug>(neosnippet_expand_or_jump)
+snoremap <C-m>     <Plug>(neosnippet_expand_or_jump)
+xnoremap <C-m>     <Plug>(neosnippet_expand_target)
 
 " ruby color scheme
 autocmd ColorScheme * highlight rubyComment ctermfg=50
@@ -130,6 +130,11 @@ inoremap <C-j> <down>
 inoremap <C-k> <up>
 inoremap <C-h> <left>
 inoremap <C-l> <right>
+
+inoremap jj <Esc>
+inoremap kk <Esc>
+map ww :w<Enter>
+map qq :q<Enter>
 
 imap ∆ <down>
 imap ˙ <left>
