@@ -21,7 +21,7 @@ set virtualedit=onemore " 行末1文字までカーソルを移動できるよ�
 autocmd BufWritePre * :%s/\s\+$//ge " 行末の無駄な空白を削除
 
 " colorscheme delek
-colorscheme peachpuff
+" colorscheme peachpuff
 " ruby カラースキーマを設定
 " autocmd FileType ruby colorscheme ron
 
@@ -82,16 +82,25 @@ Plug 'deoplete-plugins/deoplete-jedi'
 " go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vim-jp/vim-go-extra'
-Plug 'zchee/deoplete-go'
+Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'zchee/deoplete-go', { 'do': 'make' }
 
 " git関連のプラグイン
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+
+Plug 'Shougo/unite.vim'
+
+Plug 'flazz/vim-colorschemes'
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 call deoplete#enable()
 
 let g:deoplete#max_list = 15
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
 " emmetのキーボードバインディング
 let g:user_emmet_leader_key = "<C-f>"
@@ -101,11 +110,6 @@ let g:gitgutter_highlight_lines = 0
 highlight GitGutterAdd ctermfg=green
 highlight GitGutterAdd ctermfg=red
 set updatetime=1000
-
-" snippet のキーバインド
-inoremap <C-m>     <Plug>(neosnippet_expand_or_jump)
-snoremap <C-m>     <Plug>(neosnippet_expand_or_jump)
-xnoremap <C-m>     <Plug>(neosnippet_expand_target)
 
 " ruby color scheme
 autocmd ColorScheme * highlight rubyComment ctermfg=50
@@ -142,3 +146,10 @@ imap ¬ <right>
 imap ˚ <up>
 
 noremap <S-u> <C-r>
+" snippet のキーバインド
+imap <C-y>    <Plug>(neosnippet_expand_or_jump)
+" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k>     <Plug>(neosnippet_expand_target)
+" j" Enable snipMate compatibility feature.
+" jlet g:neosnippet#enable_snipmate_compatibility = 1
+colorscheme Monokai
