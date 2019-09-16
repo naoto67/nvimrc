@@ -1,0 +1,21 @@
+{
+  "suggest.autoTrigger": "none",
+  "languageserver": {
+    "puppet": {
+      "command": "ruby",
+      "args": ["/Users/naoto67/tmp/puppet-editor-services/puppet-languageserver","--stdio","--puppet-settings=--moduledir,/path/to/module/path"],
+      "cwd": "/Users/naoto67/tmp/puppet-editor-services",
+      "filetypes": ["puppet"],
+      "rootPatterns": [".git/", "metadata.json"]
+    },
+    "go": {
+      "command": "go-langserver",
+      "args": [],
+      "initializationOptions": {
+        "funcSnippetEnabled": true,
+        "gocodeCompletionEnabled": true
+      },
+      "filetypes": ["go"]
+    }
+  }
+}
