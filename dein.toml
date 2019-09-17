@@ -21,9 +21,14 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'mattn/emmet-vim'
 
-[[plugins]]
-repo = 'neoclide/coc.nvim'
-build = 'yarn install --frozen-lockfile'
+# [[plugins]]
+# repo = 'autozimu/LanguageClient-neovim'
+# rev = 'next'
+# build = 'bash install.sh'
+
+# [[plugins]]
+# repo = 'neoclide/coc.nvim'
+# build = 'yarn install --frozen-lockfile'
 # if = '''executable('node') && executable('yarn')'''
 # build = './install.sh nightly'
 # hook_add = 'source ~/.config/nvim/coc-settings.vim'
@@ -40,9 +45,65 @@ repo = 'Shougo/denite.nvim'
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 hook_add = '''
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
   let g:deoplete#enable_at_startup = 1
   set completeopt+=noinsert
+  let g:deoplete#max_list = 10000
+'''
+
+# [[plugins]]
+# repo = 'rodjek/vim-puppet'
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+hook_source = '''
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
+  if has('conceal')
+    set conceallevel=2 concealcursor=niv
+  endif
+'''
+on_i  = 1
+on_ft = ['snippet']
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+# [[plugins]]
+# repo = 'Shougo/deoplete-rct'
+
+# [[plugins]]
+# repo = 'zchee/deoplete-jedi'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+build = 'make'
+hook_add = '''
+  let g:go_def_mapping_enabled = 0
+  let g:go_doc_keywordprg_enabled = 0
+  let g:go_fmt_command = "goimports"
 '''
 
 [[plugins]]
-repo = 'rodjek/vim-puppet'
+repo = 'zchee/deoplete-go'
+build = 'make'
+on_ft = 'go'
+depends = ['deoplete.nvim']
+hook_source = '''
+  let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
+'''
+
+[[plugins]]
+repo = 'tbodt/deoplete-tabnine'
+build = 'bash install.sh'
+on_ft = ['ruby', 'html', 'json', 'javasript', 'yaml']
