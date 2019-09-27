@@ -136,3 +136,7 @@ colorscheme monokai
 " nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
 " let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
+"
+
+let g:go_fmt_command = "gofmt"
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']

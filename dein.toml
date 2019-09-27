@@ -49,9 +49,7 @@ hook_add = '''
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
-  let g:deoplete#enable_at_startup = 1
-  set completeopt+=noinsert
-  let g:deoplete#max_list = 10000
+  source ~/.config/nvim/deoplete.vim
 '''
 
 # [[plugins]]
@@ -106,4 +104,16 @@ hook_source = '''
 [[plugins]]
 repo = 'tbodt/deoplete-tabnine'
 build = 'bash install.sh'
-on_ft = ['ruby', 'html', 'json', 'javasript', 'yaml']
+# on_ft = ['ruby', 'html', 'json', 'javasript', 'yaml']
+
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = ['javascript', 'javascript.jsx']
+
+[[plugins]]
+repo = 'maxmellon/vim-jsx-pretty'
+on_ft = ['javascript', 'javascript.jsx']
+
+[[plugins]]
+repo = 'alampros/vim-styled-jsx'
+on_ft = ['javascript', 'javascript.jsx']
