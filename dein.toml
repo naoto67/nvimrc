@@ -1,12 +1,12 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-[[plugins]] # カーソル位置のコンテキストに合わせてftを切り替える
-repo = 'osyo-manga/vim-precious'
-depends = ['context_filetype.vim']
+# [[plugins]] # カーソル位置のコンテキストに合わせてftを切り替える
+# repo = 'osyo-manga/vim-precious'
+# depends = ['context_filetype.vim']
 
-[[plugins]] # カーソル位置のコンテキストのftを判定するライブラリ
-repo = 'Shougo/context_filetype.vim'
+# [[plugins]] # カーソル位置のコンテキストのftを判定するライブラリ
+# repo = 'Shougo/context_filetype.vim'
 
 [[plugins]] # toml syntax
 repo = 'cespare/vim-toml'
@@ -117,3 +117,9 @@ on_ft = ['javascript', 'javascript.jsx']
 [[plugins]]
 repo = 'alampros/vim-styled-jsx'
 on_ft = ['javascript', 'javascript.jsx']
+
+[[plugins]]
+repo = 'posva/vim-vue'
+
+[[plugins]]
+repo = 'ryym/vim-riot'
