@@ -1,7 +1,6 @@
 let g:python3_host_prog = $PYENV_ROOT.'/versions/neovim3/bin/python'
 let g:python_host_prog = $PYENV_ROOT.'/versions/neovim2/bin/python'
 
-set tags=./tags;$HOME
 nnoremap <C-]> g<C-]>
 inoremap <C-]> <ESC>g<C-]>
 
@@ -80,12 +79,6 @@ highlight GitGutterAdd ctermfg=green
 highlight GitGutterAdd ctermfg=red
 set updatetime=1000
 
-" ruby color scheme
-autocmd ColorScheme * highlight rubyComment ctermfg=50
-autocmd ColorScheme * highlight rubyInstanceVariable ctermfg=50
-autocmd ColorScheme * highlight rubyIdentifier ctermfg=220
-autocmd ColorScheme * highlight Identifier ctermfg=14 guifg=cyan
-
 " 補完が出ているときTABで選択可能にする
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
@@ -96,8 +89,6 @@ noremap <S-h> <S-Left>
 noremap <S-l> <S-Right>
 noremap <C-j> <C-d>
 noremap <C-k> <C-u>
-noremap <S-j> <C-d>
-noremap <S-k> <C-u>
 
 inoremap <C-j> <down>
 inoremap <C-k> <up>
@@ -106,17 +97,12 @@ inoremap <C-l> <right>
 
 inoremap jj <Esc>
 inoremap kk <Esc>
-map ww :w<Enter>
-map qq :q<Enter>
-
-imap ∆ <down>
-imap ˙ <left>
-imap ¬ <right>
-imap ˚ <up>
+noremap ww :w<Enter>
+noremap qq :q<Enter>
 
 noremap <S-u> <C-r>
 " snippet のキーバインド
-imap <C-y>    <Plug>(neosnippet_expand_or_jump)
+inoremap <C-y>    <Plug>(neosnippet_expand_or_jump)
 " smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 " xmap <C-k>     <Plug>(neosnippet_expand_target)
 " j" Enable snipMate compatibility feature.
@@ -141,3 +127,6 @@ colorscheme monokai
 
 let g:go_fmt_command = "gofmt"
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+
+" let g:coc_global_extensions = ['coc-solargraph']
+let g:dein#auto_recache = 1
