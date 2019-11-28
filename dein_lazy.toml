@@ -1,0 +1,19 @@
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+  source ~/.config/nvim/deoplete.vim
+'''
+
+[[plugins]]
+repo = 'fatih/vim-go'
+build = 'make'
+hook_add = '''
+  let g:go_def_mapping_enabled = 0
+  let g:go_doc_keywordprg_enabled = 0
+  let g:go_fmt_command = "goimports"
+'''
+on_ft = ['go']

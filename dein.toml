@@ -42,16 +42,6 @@ repo = 'tpope/vim-endwise'
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_add = '''
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-  source ~/.config/nvim/deoplete.vim
-'''
-
 # [[plugins]]
 # repo = 'rodjek/vim-puppet'
 
@@ -80,17 +70,26 @@ repo = 'itchyny/lightline.vim'
 # [[plugins]]
 # repo = 'Shougo/deoplete-rct'
 
-# [[plugins]]
-# repo = 'zchee/deoplete-jedi'
+[[plugins]]
+repo = 'pangloss/vim-javascript'
 
 [[plugins]]
-repo = 'fatih/vim-go'
-build = 'make'
-hook_add = '''
-  let g:go_def_mapping_enabled = 0
-  let g:go_doc_keywordprg_enabled = 0
-  let g:go_fmt_command = "goimports"
-'''
+repo = 'maxmellon/vim-jsx-pretty'
+
+[[plugins]]
+repo = 'alampros/vim-styled-jsx'
+
+[[plugins]]
+repo = 'posva/vim-vue'
+
+[[plugins]]
+repo = 'ryym/vim-riot'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'moll/vim-node'
 
 [[plugins]]
 repo = 'zchee/deoplete-go'
@@ -103,23 +102,4 @@ hook_source = '''
 
 [[plugins]]
 repo = 'tbodt/deoplete-tabnine'
-build = 'bash install.sh'
-# on_ft = ['ruby', 'html', 'json', 'javasript', 'yaml']
-
-[[plugins]]
-repo = 'pangloss/vim-javascript'
-on_ft = ['javascript', 'javascript.jsx']
-
-[[plugins]]
-repo = 'maxmellon/vim-jsx-pretty'
-on_ft = ['javascript', 'javascript.jsx']
-
-[[plugins]]
-repo = 'alampros/vim-styled-jsx'
-on_ft = ['javascript', 'javascript.jsx']
-
-[[plugins]]
-repo = 'posva/vim-vue'
-
-[[plugins]]
-repo = 'ryym/vim-riot'
+build = './install.sh'

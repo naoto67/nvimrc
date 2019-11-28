@@ -15,7 +15,7 @@ let s:deoplete_custom_option = {
       \   'yaml': s:default_ignore_sources+['buffer', 'omni'],
       \   'yaml.docker-compose': s:default_ignore_sources+['buffer', 'omni'],
       \ },
-      \ 'max_list': 10000,
+      \ 'max_list': 20,
       \ 'min_pattern_length': 1,
       \ 'num_processes': 16,
       \ 'on_insert_enter': v:true,
