@@ -20,20 +20,11 @@ set history=100
 " set undofile            " ファイルを閉じてもundoできるようにする
 autocmd BufWritePre * :%s/\s\+$//ge " 行末の無駄な空白を削除
 
-" colorscheme delek
-" colorscheme peachpuff
-" ruby カラースキーマを設定
-" autocmd FileType ruby colorscheme ron
-
 autocmd ColorScheme * highlight htmlTagName ctermfg=226
 autocmd ColorScheme * highlight htmlTag ctermfg=14
 autocmd ColorScheme * highlight htmlEndTag ctermfg=14
 autocmd ColorScheme * highlight htmlArg ctermfg=154
 
-" カラースキーマの微妙な設定 :highlightで詳細を確認できる
-" :help group-nameでなんかできる
-" :so $VIMRUNTIME/syntax/hitest.vim 現在の色設定の確認
-" temp 以下のterm_color.plを実行するとctermfg が調べられるよ
 " 括弧類を勝手に閉じるマン
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap [<Enter> []<Left><CR><ESC><S-o>
@@ -105,24 +96,7 @@ noremap <S-u> <C-r>
 imap <C-y> <Plug>(neosnippet_expand_or_jump)
 " smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 " xmap <C-k>     <Plug>(neosnippet_expand_target)
-" j" Enable snipMate compatibility feature.
-" jlet g:neosnippet#enable_snipmate_compatibility = 1
 colorscheme monokai
-" Required for operations modifying multiple buffers like rename.
-" let g:coc_global_extensions = ['coc-solargraph']
-" if hidden is not set, TextEdit might fail.
-
-" set hidden
-" let g:LanguageClient_serverCommands = {
-"     \ 'ruby': ['bundle', 'exec', 'solargraph', 'stdio'],
-"     \ }
-" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" " Or map each action separately
-" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-" let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
-" let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
 "
 
 let g:go_fmt_command = "goimports"
