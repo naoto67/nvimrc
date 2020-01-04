@@ -125,8 +125,8 @@ colorscheme monokai
 " let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
 "
 
-let g:go_fmt_command = "gofmt"
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:go_fmt_command = "goimports"
+" let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 
 " let g:coc_global_extensions = ['coc-solargraph']
 let g:dein#auto_recache = 1

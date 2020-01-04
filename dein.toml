@@ -7,6 +7,16 @@ repo = 'Shougo/dein.vim'
 
 # [[plugins]] # カーソル位置のコンテキストのftを判定するライブラリ
 # repo = 'Shougo/context_filetype.vim'
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+  source ~/.config/nvim/deoplete.vim
+'''
+
 
 [[plugins]] # toml syntax
 repo = 'cespare/vim-toml'
@@ -74,22 +84,26 @@ repo = 'itchyny/lightline.vim'
 repo = 'pangloss/vim-javascript'
 
 [[plugins]]
-repo = 'maxmellon/vim-jsx-pretty'
-
-[[plugins]]
-repo = 'alampros/vim-styled-jsx'
+repo = 'mxw/vim-jsx'
 
 [[plugins]]
 repo = 'posva/vim-vue'
 
-[[plugins]]
-repo = 'ryym/vim-riot'
+#
+# [[plugins]]
+# repo = 'maxmellon/vim-jsx-pretty'
+#
+# [[plugins]]
+# repo = 'alampros/vim-styled-jsx'
+
+# [[plugins]]
+# repo = 'ryym/vim-riot'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
 
-[[plugins]]
-repo = 'moll/vim-node'
+# [[plugins]]
+# repo = 'moll/vim-node'
 
 [[plugins]]
 repo = 'zchee/deoplete-go'
@@ -103,3 +117,17 @@ hook_source = '''
 [[plugins]]
 repo = 'tbodt/deoplete-tabnine'
 build = './install.sh'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+build = 'make'
+hook_add = '''
+  let g:go_def_mapping_enabled = 0
+  let g:go_doc_keywordprg_enabled = 0
+  let g:go_fmt_command = "goimports"
+'''
+on_ft = ['go']
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = ['typescript']
