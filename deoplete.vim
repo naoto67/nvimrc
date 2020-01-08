@@ -14,7 +14,7 @@ let s:deoplete_custom_option = {
       \   'typescript': s:default_ignore_sources+['omni', 'tabnine'],
       \   'yaml': s:default_ignore_sources+['buffer', 'omni'],
       \   'yaml.docker-compose': s:default_ignore_sources+['buffer', 'omni'],
-      \   'vue': s:default_ignore_sources+['tabnine'],
+      \   'vue': s:default_ignore_sources+['omni','tabnine'],
       \ },
       \ 'max_list': 20,
       \ 'min_pattern_length': 1,

@@ -32,11 +32,6 @@ repo = 'tpope/vim-fugitive'
 repo = 'mattn/emmet-vim'
 
 # [[plugins]]
-# repo = 'autozimu/LanguageClient-neovim'
-# rev = 'next'
-# build = 'bash install.sh'
-
-# [[plugins]]
 # repo = 'neoclide/coc.nvim'
 # build = 'yarn install --frozen-lockfile'
 # if = '''executable('node') && executable('yarn')'''
@@ -89,7 +84,6 @@ repo = 'mxw/vim-jsx'
 [[plugins]]
 repo = 'posva/vim-vue'
 
-#
 # [[plugins]]
 # repo = 'maxmellon/vim-jsx-pretty'
 #
@@ -99,11 +93,11 @@ repo = 'posva/vim-vue'
 # [[plugins]]
 # repo = 'ryym/vim-riot'
 
-[[plugins]]
-repo = 'tpope/vim-surround'
-
 # [[plugins]]
 # repo = 'moll/vim-node'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
 
 [[plugins]]
 repo = 'zchee/deoplete-go'
@@ -131,3 +125,28 @@ on_ft = ['go']
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
 on_ft = ['typescript']
+
+[[plugins]]
+repo = 'dense-analysis/ale'
+on_cmd = ['ALELint', 'ALEToggle', 'ALEEnable', 'ALEToggleBuffer', 'ALEEnableBuffer']
+hook_source = '''
+let g:ale_linters_explicit = 1 " 必要なlinterのみ有効化したいため
+let g:ale_linters = {
+  \   'typescript': ['tsserver']
+  \   }
+'''
+depends = 'asyncomplete.vim'
+on_ft = ['typescript', 'vue']
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+on_func = 'asyncomplete#enable_for_buffer'
+hook_source = '''
+let g:asyncomplete_enable_for_all = 0 " TypeScriptファイルの編集時のみ使用したいため
+set completeopt+=preview
+
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ale#get_source_options({
+\ 'priority': 10
+\ }))
+'''
+on_ft = ['typescript', 'vue']

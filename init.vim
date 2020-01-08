@@ -104,3 +104,15 @@ let g:go_fmt_command = "goimports"
 
 " let g:coc_global_extensions = ['coc-solargraph']
 let g:dein#auto_recache = 1
+
+function! s:typescript() abort
+  ALEEnable
+  call asyncomplete#enable_for_buffer()
+  map <buffer> <C-]> <Plug>(ale_go_to_definition)
+  imap <buffer> <C-Space> <Plug>(asyncomplete_force_refresh)
+endfunction
+
+augroup TypeScript
+  autocmd!
+  autocmd FileType typescript call s:typescript()
+augroup END
