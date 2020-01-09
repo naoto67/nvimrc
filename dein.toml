@@ -14,7 +14,6 @@ hook_add = '''
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
-  source ~/.config/nvim/deoplete.vim
 '''
 
 
@@ -31,24 +30,8 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'mattn/emmet-vim'
 
-# [[plugins]]
-# repo = 'neoclide/coc.nvim'
-# build = 'yarn install --frozen-lockfile'
-# if = '''executable('node') && executable('yarn')'''
-# build = './install.sh nightly'
-# hook_add = 'source ~/.config/nvim/coc-settings.vim'
-
-[[plugins]]
-repo = 'tpope/vim-rails'
-
 [[plugins]]
 repo = 'tpope/vim-endwise'
-
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-
-# [[plugins]]
-# repo = 'rodjek/vim-puppet'
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
@@ -67,13 +50,7 @@ on_ft = ['snippet']
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
-repo = 'junegunn/fzf'
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
-
-# [[plugins]]
-# repo = 'Shougo/deoplete-rct'
 
 [[plugins]]
 repo = 'pangloss/vim-javascript'
@@ -83,18 +60,6 @@ repo = 'mxw/vim-jsx'
 
 [[plugins]]
 repo = 'posva/vim-vue'
-
-# [[plugins]]
-# repo = 'maxmellon/vim-jsx-pretty'
-#
-# [[plugins]]
-# repo = 'alampros/vim-styled-jsx'
-
-# [[plugins]]
-# repo = 'ryym/vim-riot'
-
-# [[plugins]]
-# repo = 'moll/vim-node'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
@@ -108,9 +73,9 @@ hook_source = '''
   let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
 '''
 
-[[plugins]]
-repo = 'tbodt/deoplete-tabnine'
-build = './install.sh'
+# [[plugins]]
+# repo = 'tbodt/deoplete-tabnine'
+# build = './install.sh'
 
 [[plugins]]
 repo = 'fatih/vim-go'

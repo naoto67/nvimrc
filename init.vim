@@ -1,6 +1,3 @@
-let g:python3_host_prog = $PYENV_ROOT.'/versions/neovim3/bin/python'
-let g:python_host_prog = $PYENV_ROOT.'/versions/neovim2/bin/python'
-
 nnoremap <C-]> g<C-]>
 inoremap <C-]> <ESC>g<C-]>
 
@@ -43,12 +40,10 @@ endif
 let &runtimepath = s:dein_repo_dir .",". &runtimepath
 " プラグイン読み込み＆キャッシュ作成
 let s:toml_file = $HOME . '/.config/nvim/dein.toml'
-let s:lazy_toml_file = $HOME . '/.config/nvim/dein_lazy.toml'
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
   call dein#load_toml(s:toml_file, {'lazy': 0})
-  call dein#load_toml(s:lazy_toml_file, {'lazy': 1})
 
   call dein#end()
   call dein#save_state()
@@ -97,7 +92,6 @@ imap <C-y> <Plug>(neosnippet_expand_or_jump)
 " smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 " xmap <C-k>     <Plug>(neosnippet_expand_target)
 colorscheme monokai
-"
 
 let g:go_fmt_command = "goimports"
 " let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
