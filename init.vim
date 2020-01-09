@@ -1,3 +1,7 @@
+let g:python_host_prog = expand('/usr/local/bin/python2')
+let g:python3_host_prog = expand('/usr/local/bin/python3')
+let g:ruby_host_prog = expand('/usr/bin/ruby')
+
 nnoremap <C-]> g<C-]>
 inoremap <C-]> <ESC>g<C-]>
 
@@ -93,9 +97,6 @@ imap <C-y> <Plug>(neosnippet_expand_or_jump)
 " xmap <C-k>     <Plug>(neosnippet_expand_target)
 colorscheme monokai
 
-let g:go_fmt_command = "goimports"
-" let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-
 " let g:coc_global_extensions = ['coc-solargraph']
 let g:dein#auto_recache = 1
 
@@ -110,3 +111,5 @@ augroup TypeScript
   autocmd!
   autocmd FileType typescript call s:typescript()
 augroup END
+
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'

@@ -7,15 +7,6 @@ repo = 'Shougo/dein.vim'
 
 # [[plugins]] # カーソル位置のコンテキストのftを判定するライブラリ
 # repo = 'Shougo/context_filetype.vim'
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_add = '''
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-'''
-
 
 [[plugins]] # toml syntax
 repo = 'cespare/vim-toml'
@@ -64,14 +55,15 @@ repo = 'posva/vim-vue'
 [[plugins]]
 repo = 'tpope/vim-surround'
 
-[[plugins]]
+[[plugins]] # コード補完
+repo = 'Shougo/deoplete.nvim'
+# プラグインが dein.vim によって追加されたとき実行
+hook_add = 'let g:deoplete#enable_at_startup = 1'
+
+[[plugins]] # コード補完（Golang用）
 repo = 'zchee/deoplete-go'
-build = 'make'
 on_ft = 'go'
 depends = ['deoplete.nvim']
-hook_source = '''
-  let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
-'''
 
 # [[plugins]]
 # repo = 'tbodt/deoplete-tabnine'
