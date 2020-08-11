@@ -109,22 +109,6 @@ repo = 'tpope/vim-surround'
 # '''
 
 [[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-build = 'bash install.sh'
-rev = 'next'
-hook_add = '''
-  set hidden
-  let g:LanguageClient_serverCommands = {
-      \ 'go': ['gopls']
-      \ }
-  let g:LanguageClient_loadSettings = 1
-'''
-
-[[plugins]]
-repo = 'tbodt/deoplete-tabnine'
-build = './install.sh'
-
-[[plugins]]
 repo = 'fatih/vim-go'
 build = 'make'
 hook_add = '''
@@ -169,3 +153,10 @@ on_ft = ['tf', 'terraform']
 hook_source = '''
 let g:terraform_fmt_on_save=1
 '''
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+[[plugins]]
+repo = 'lighttiger2505/deoplete-vim-lsp'

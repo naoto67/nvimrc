@@ -117,3 +117,8 @@ augroup TypeScript
   autocmd!
   autocmd FileType typescript call s:typescript()
 augroup END
+
+let g:lsp_settings = {
+\ 'ruby': { 'cmd': ['solargraph', 'stdio'] },
+\ 'go': { 'cmd': ['gopls'] },
+\}

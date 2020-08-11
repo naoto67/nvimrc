@@ -16,7 +16,7 @@ let s:deoplete_custom_option = {
       \   'yaml.docker-compose': s:default_ignore_sources+['buffer', 'omni'],
       \   'vue': s:default_ignore_sources+['omni','tabnine'],
       \ },
-      \ 'max_list': 20,
+      \ 'max_list': 30,
       \ 'min_pattern_length': 1,
       \ 'num_processes': 16,
       \ 'on_insert_enter': v:true,
