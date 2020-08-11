@@ -27,7 +27,7 @@ let s:deoplete_custom_option = {
       \ 'skip_multibyte': v:false,
       \ 'smart_case': v:true,
       \ }
-      "\ 'prev_completion_mode': 'filter', 'length', 'mirror'
+      "\ 'prev_completion_mode': 'filter', 'length', 'mirror',
 call deoplete#custom#option(s:deoplete_custom_option)
 
 "# 'c': s:default_ignore_sources+['buffer', 'omni', 'neosnippet'],

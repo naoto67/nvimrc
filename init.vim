@@ -1,5 +1,6 @@
-let g:python3_host_prog = $PYENV_ROOT.'/versions/neovim3/bin/python'
-let g:python_host_prog = $PYENV_ROOT.'/versions/neovim2/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
+let g:python_host_prog = '/usr/bin/python2'
+let g:ruby_host_prog = $HOME.'/.rbenv/shims/ruby'
 
 nnoremap <C-]> g<C-]>
 inoremap <C-]> <ESC>g<C-]>
@@ -10,7 +11,7 @@ set tabstop=2          "タブを何文字の空白に変換するか
 set shiftwidth=2       "自動インデント時に入力する空白の数
 set expandtab          "タブ入力を空白に変換
 set splitright         "画面を縦分割する際に右に開く
-set clipboard=unnamed  "yank した文字列をクリップボードにコピー
+set clipboard+=unnamedplus  "yank した文字列をクリップボードにコピー
 set hls                "検索した文字をハイライトする
 set showmatch          " 括弧入力時に対応する括弧を表示 (noshowmatch:表示しない)
 set noswapfile         " swap file を作らない
@@ -99,7 +100,7 @@ imap <C-y> <Plug>(neosnippet_expand_or_jump)
 colorscheme monokai
 "
 
-let g:go_fmt_command = "goimports"
+" let g:go_fmt_command = "goimports"
 " let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 
 " let g:coc_global_extensions = ['coc-solargraph']

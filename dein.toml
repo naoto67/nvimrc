@@ -99,13 +99,25 @@ repo = 'posva/vim-vue'
 [[plugins]]
 repo = 'tpope/vim-surround'
 
+# [[plugins]]
+# repo = 'zchee/deoplete-go'
+# build = 'unix make'
+# on_ft = 'go'
+# depends = ['deoplete.nvim']
+# hook_source = '''
+#   let g:deoplete#sources#go#gocode_binary = '/home/naoto/.go/bin/gocode'
+# '''
+
 [[plugins]]
-repo = 'zchee/deoplete-go'
-build = 'make'
-on_ft = 'go'
-depends = ['deoplete.nvim']
-hook_source = '''
-  let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
+repo = 'autozimu/LanguageClient-neovim'
+build = 'bash install.sh'
+rev = 'next'
+hook_add = '''
+  set hidden
+  let g:LanguageClient_serverCommands = {
+      \ 'go': ['gopls']
+      \ }
+  let g:LanguageClient_loadSettings = 1
 '''
 
 [[plugins]]
@@ -150,3 +162,10 @@ autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#s
 \ }))
 '''
 on_ft = ['typescript', 'vue']
+
+[[plugins]]
+repo = 'hashivim/vim-terraform'
+on_ft = ['tf', 'terraform']
+hook_source = '''
+let g:terraform_fmt_on_save=1
+'''
