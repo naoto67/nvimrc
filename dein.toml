@@ -66,3 +66,5 @@ repo = 'lighttiger2505/deoplete-vim-lsp'
 repo = 'prabirshrestha/asyncomplete.vim'
 [[plugins]]
 repo = 'prabirshrestha/asyncomplete-lsp.vim'
+[[plugins]]
+repo = 'scrooloose/nerdtree'
