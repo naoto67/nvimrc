@@ -96,5 +96,3 @@ fu! s:HighlightTagAtPosition(position)
                 \ .'\(\%' . line('.') . 'l<\zs[^<>]\{-}\ze\s[^<>]*\%' . col('.') . 'c.\{-}[\n>]\)/'
     let w:tag_hl_on = 1
 endfu
-
-" vim: set ts=8 sts=4 sw=4 expandtab :
