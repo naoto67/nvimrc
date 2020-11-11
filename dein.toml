@@ -68,3 +68,5 @@ repo = 'prabirshrestha/asyncomplete.vim'
 repo = 'prabirshrestha/asyncomplete-lsp.vim'
 [[plugins]]
 repo = 'scrooloose/nerdtree'
+[[plugins]]
+repo = 'mattn/vim-goimports'
