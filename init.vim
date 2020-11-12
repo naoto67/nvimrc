@@ -1,6 +1,6 @@
-let g:python3_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/usr/local/bin/python3.8'
 let g:python_host_prog = '/usr/bin/python2'
-let g:ruby_host_prog = $HOME.'/.rbenv/shims/ruby'
+let g:ruby_host_prog = '/usr/bin/ruby'
 
 runtime _config/00_init.vim
 runtime _config/01_lsp.vim
