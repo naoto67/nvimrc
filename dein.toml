@@ -70,3 +70,5 @@ repo = 'prabirshrestha/asyncomplete-lsp.vim'
 repo = 'scrooloose/nerdtree'
 [[plugins]]
 repo = 'mattn/vim-goimports'
+[[plugins]]
+repo = 'junegunn/fzf.vim'
