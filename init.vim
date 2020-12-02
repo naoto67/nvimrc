@@ -11,3 +11,4 @@ runtime _config/05_nerdtree.vim
 runtime _config/10_emmet.vim
 runtime _config/11_fugitive.vim
 runtime _config/21_keymaps.vim
+runtime _config/22_fzf.vim
