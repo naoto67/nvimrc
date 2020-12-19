@@ -13,3 +13,5 @@ runtime _config/10_emmet.vim
 runtime _config/11_fugitive.vim
 runtime _config/21_keymaps.vim
 set rtp+=~/.fzf
+
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
