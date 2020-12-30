@@ -40,16 +40,21 @@ repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 [[plugins]]
-repo = 'pangloss/vim-javascript'
-[[plugins]]
-repo = 'mxw/vim-jsx'
-[[plugins]]
-repo = 'posva/vim-vue'
-[[plugins]]
 repo = 'tpope/vim-surround'
+###
+### npm install -g neovim typescript
+# [[plugins]]
+# repo = 'mhartington/nvim-typescript'
+# build = './install.sh'
+# [[plugins]]
+# repo = 'HerringtonDarkholme/yats.vim'
+[[plugins]]
+repo = 'ianks/vim-tsx'
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
-on_ft = ['typescript']
+
+[[plugins]]
+repo = 'posva/vim-vue'
 [[plugins]]
 repo = 'hashivim/vim-terraform'
 on_ft = ['tf', 'terraform']

@@ -22,4 +22,6 @@ let g:lsp_diagnostics_enabled = 1
 " let g:lsp_text_edit_enabled = 1
 let g:lsp_log_verbose = 0
 let g:lsp_log_file = ""
-let g:lsp_text_document_did_save_delay = 500
+let g:lsp_text_document_did_save_delay = 1000
+let g:lsp_diagnostics_echo_delay = 1000
+let g:lsp_diagnostics_float_delay = 1000
