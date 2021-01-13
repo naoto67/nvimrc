@@ -1,1 +1,1 @@
-set rtp+=/usr/local/opt/fzf
+set rtp+=~/.fzf
