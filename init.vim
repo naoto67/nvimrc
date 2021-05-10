@@ -13,3 +13,4 @@ runtime _config/11_fugitive.vim
 runtime _config/21_keymaps.vim
 runtime _config/22_fzf.vim
 " set rtp+=~/.fzf
+let g:neosnippet#snippets_directory='~/.config/nvim/snippets'

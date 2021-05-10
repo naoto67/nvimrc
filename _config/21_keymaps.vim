@@ -16,6 +16,7 @@ inoremap kk <Esc>
 noremap ww :w<Enter>
 noremap qq :q<Enter>
 noremap <S-u> <C-r>
+noremap <C-f> :GFiles<cr>
 " snippet のキーバインド
 imap <C-y> <Plug>(neosnippet_expand_or_jump)
 
