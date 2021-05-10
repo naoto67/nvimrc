@@ -1,23 +1,7 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
-
-# [[plugins]] # カーソル位置のコンテキストに合わせてftを切り替える
-# repo = 'osyo-manga/vim-precious'
-# depends = ['context_filetype.vim']
-
-# [[plugins]] # カーソル位置のコンテキストのftを判定するライブラリ
-# repo = 'Shougo/context_filetype.vim'
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-hook_add = '''
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-  source ~/.config/nvim/deoplete.vim
-'''
-
-
 [[plugins]] # toml syntax
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
@@ -31,24 +15,11 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'mattn/emmet-vim'
 
-# [[plugins]]
-# repo = 'neoclide/coc.nvim'
-# build = 'yarn install --frozen-lockfile'
-# if = '''executable('node') && executable('yarn')'''
-# build = './install.sh nightly'
-# hook_add = 'source ~/.config/nvim/coc-settings.vim'
-
-[[plugins]]
-repo = 'tpope/vim-rails'
-
 [[plugins]]
 repo = 'tpope/vim-endwise'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-
-# [[plugins]]
-# repo = 'rodjek/vim-puppet'
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
@@ -67,96 +38,37 @@ on_ft = ['snippet']
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
-repo = 'junegunn/fzf'
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
-
-# [[plugins]]
-# repo = 'Shougo/deoplete-rct'
-
 [[plugins]]
 repo = 'pangloss/vim-javascript'
-
 [[plugins]]
 repo = 'mxw/vim-jsx'
-
 [[plugins]]
 repo = 'posva/vim-vue'
-
-# [[plugins]]
-# repo = 'maxmellon/vim-jsx-pretty'
-#
-# [[plugins]]
-# repo = 'alampros/vim-styled-jsx'
-
-# [[plugins]]
-# repo = 'ryym/vim-riot'
-
-# [[plugins]]
-# repo = 'moll/vim-node'
-
 [[plugins]]
 repo = 'tpope/vim-surround'
-
-# [[plugins]]
-# repo = 'zchee/deoplete-go'
-# build = 'unix make'
-# on_ft = 'go'
-# depends = ['deoplete.nvim']
-# hook_source = '''
-#   let g:deoplete#sources#go#gocode_binary = '/home/naoto/.go/bin/gocode'
-# '''
-
-[[plugins]]
-repo = 'fatih/vim-go'
-build = 'make'
-hook_add = '''
-  let g:go_def_mapping_enabled = 0
-  let g:go_doc_keywordprg_enabled = 0
-  let g:go_fmt_command = "goimports"
-'''
-on_ft = ['go']
-
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
 on_ft = ['typescript']
-
-[[plugins]]
-repo = 'dense-analysis/ale'
-on_cmd = ['ALELint', 'ALEToggle', 'ALEEnable', 'ALEToggleBuffer', 'ALEEnableBuffer']
-hook_source = '''
-let g:ale_linters_explicit = 1 " 必要なlinterのみ有効化したいため
-let g:ale_linters = {
-  \   'typescript': ['tsserver']
-  \   }
-'''
-depends = 'asyncomplete.vim'
-on_ft = ['typescript', 'vue']
-
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete.vim'
-on_func = 'asyncomplete#enable_for_buffer'
-hook_source = '''
-let g:asyncomplete_enable_for_all = 0 " TypeScriptファイルの編集時のみ使用したいため
-set completeopt+=preview
-
-autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ale#get_source_options({
-\ 'priority': 10
-\ }))
-'''
-on_ft = ['typescript', 'vue']
-
 [[plugins]]
 repo = 'hashivim/vim-terraform'
 on_ft = ['tf', 'terraform']
 hook_source = '''
 let g:terraform_fmt_on_save=1
 '''
-
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
 [[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+[[plugins]]
+repo = 'mattn/vim-goimports'
+[[plugins]]
+repo = 'junegunn/fzf.vim'
