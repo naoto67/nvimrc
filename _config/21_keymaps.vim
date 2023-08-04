@@ -16,7 +16,10 @@ inoremap kk <Esc>
 noremap ww :w<Enter>
 noremap qq :q<Enter>
 noremap <S-u> <C-r>
-noremap <C-f> :GFiles<cr>
+nnoremap <C-f> :FzfLua files<CR>
+nnoremap <C-b> :FzfLua buffers<CR>
+nnoremap <S-f> :FzfLua live_grep<CR>
+
 " snippet のキーバインド
 imap <C-y> <Plug>(neosnippet_expand_or_jump)
 
@@ -24,3 +27,9 @@ imap <C-y> <Plug>(neosnippet_expand_or_jump)
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap [<Enter> []<Left><CR><ESC><S-o>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
+
+" copilot
+inoremap <C-[> <Plug>(copilot-previous)
+inoremap <C-]> <Plug>(copilot-next)
+inoremap <ESC> <ESC>
+map <D-v> "+p<CR>

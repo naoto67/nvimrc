@@ -71,4 +71,10 @@ repo = 'scrooloose/nerdtree'
 [[plugins]]
 repo = 'mattn/vim-goimports'
 [[plugins]]
-repo = 'junegunn/fzf.vim'
+repo = 'ibhagwan/fzf-lua'
+[[plugins]]
+repo = 'nvim-tree/nvim-web-devicons'
+[[plugins]]
+repo = 'rhysd/vim-go-impl'
+[[plugins]]
+repo = 'github/copilot.vim'

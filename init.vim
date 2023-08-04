@@ -1,6 +1,7 @@
-let g:python3_host_prog = '/usr/local/bin/python3.9'
-let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
+" let g:python_host_prog = '/usr/bin/python2'
 let g:ruby_host_prog = '/usr/bin/ruby'
+let g:loaded_perl_provider = 0
 
 runtime _config/00_init.vim
 runtime _config/01_lsp.vim
@@ -14,3 +15,4 @@ runtime _config/21_keymaps.vim
 runtime _config/22_fzf.vim
 " set rtp+=~/.fzf
 let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
+nnoremap <silent><C-e> :NERDTreeToggle<CR>

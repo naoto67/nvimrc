@@ -14,3 +14,6 @@ set history=100
 " set undofile            " ファイルを閉じてもundoできるようにする
 autocmd BufWritePre * :%s/\s\+$//ge " 行末の無駄な空白を削除
 autocmd BufRead,BufNewFile *.jbuilder setfiletype ruby
+
+set encoding=utf-8
+set fileencodings=utf-8
