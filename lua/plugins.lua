@@ -79,6 +79,29 @@ packer.startup(function(use)
 	  -- optional for icon support
 	  requires = { "nvim-tree/nvim-web-devicons" }
 	}
+
+	use {
+	  'nvim-lualine/lualine.nvim',
+	  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+	}
+
+  use {
+    'nvim-treesitter/nvim-treesitter',
+ 		config = function()
+      local configs = require("nvim-treesitter.configs")
+
+      configs.setup({
+        ensure_installed = {"go", "lua", "vim", "vimdoc", "query", "html"},
+        sync_install = false,
+        highlight = { enable = true },
+        indent = { enable = true },
+      })
+    end,
+    run = function()
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
+    end,
+  }
 end)
 
 local function nvim_tree_on_attach(bufnr)
@@ -93,6 +116,8 @@ local function nvim_tree_on_attach(bufnr)
   vim.keymap.set('n', 'F', api.live_filter.clear, { desc = 'clear', buffer = bufnr })
   vim.keymap.set('n', 'H', api.tree.toggle_hidden_filter, { desc = 'clear', buffer = bufnr })
   vim.keymap.set('n', 's', api.node.open.vertical, { desc = 'split vertical', buffer = bufnr })
+  vim.keymap.set('n', 'm', api.fs.rename, { desc = 'rename node', buffer = bufnr })
+  vim.keymap.set('n', '<C-r>', api.tree.reload, { desc = 'refresh root', buffer = bufnr })
 end
 
 

@@ -13,7 +13,7 @@ vim.api.nvim_set_keymap('i', 'jj', '<Esc>', {})
 vim.api.nvim_set_keymap('i', 'kk', '<Esc>', {})
 vim.api.nvim_set_keymap('n', 'ww', ':w<CR>', {})
 vim.api.nvim_set_keymap('n', 'qq', ':q<CR>', {})
-vim.api.nvim_set_keymap('n', '<S-u>', '<C-r>', {})
+vim.api.nvim_set_keymap('n', '<S-u>', ':red<CR>', {})
 
 -- FzfLuaコマンドのキーマッピング
 vim.api.nvim_set_keymap('n', '<C-f>', ':FzfLua files<CR>', {})
