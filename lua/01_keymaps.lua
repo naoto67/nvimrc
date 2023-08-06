@@ -1,6 +1,6 @@
 -- 補完が出ているときTABで選択可能にする
-vim.api.nvim_set_keymap('i', '<TAB>', 'pumvisible() and "\\<C-n>" or "\\<TAB>"', { expr = true })
-vim.api.nvim_set_keymap('i', '<S-TAB>', 'pumvisible() and "\\<C-p>" or "\\<S-TAB>"', { expr = true })
+-- vim.api.nvim_set_keymap('i', '<TAB>', 'pumvisible() and "\\<C-n>" or "\\<TAB>"', { expr = true })
+-- vim.api.nvim_set_keymap('i', '<S-TAB>', 'pumvisible() and "\\<C-p>" or "\\<S-TAB>"', { expr = true })
 
 -- キーバインドの変換
 vim.api.nvim_set_keymap('n', '<C-h>', '<S-Left>', {})

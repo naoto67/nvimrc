@@ -13,6 +13,7 @@ vim.o.incsearch = true
 vim.o.ignorecase = true
 vim.o.scrolloff = 10
 vim.opt.helplang = 'ja', 'en'
+vim.opt.splitright = true
 
 vim.opt.clipboard:append{'unnamedplus'}
 
@@ -27,3 +28,12 @@ vim.cmd 'autocmd ColorScheme * highlight htmlTag ctermfg=14'
 vim.cmd 'autocmd ColorScheme * highlight htmlEndTag ctermfg=14'
 vim.cmd 'autocmd ColorScheme * highlight htmlArg ctermfg=154'
 vim.cmd 'colorscheme monokai'
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "plugins.lua" },
+  command = "PackerCompile",
+})
+
+vim.g.gitgutter_highlight_lines = 0
+vim.cmd 'highlight GitGutterAdd ctermfg=green'
+vim.opt.updatetime = 1000
