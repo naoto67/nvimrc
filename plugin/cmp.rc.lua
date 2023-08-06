@@ -1,5 +1,3 @@
--- Lspkindのrequire
-local lspkind = require 'lspkind'
 --補完関係の設定
 local cmp = require("cmp")
 cmp.setup({
@@ -38,17 +36,4 @@ cmp.setup({
   --     -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
   --   })
   -- }
-})
-
-cmp.setup.cmdline('/', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' } --ソース類を設定
-  }
-})
-cmp.setup.cmdline(":", {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = "path" }, --ソース類を設定
-  },
 })

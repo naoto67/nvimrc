@@ -1,7 +1,3 @@
--- 補完が出ているときTABで選択可能にする
--- vim.api.nvim_set_keymap('i', '<TAB>', 'pumvisible() and "\\<C-n>" or "\\<TAB>"', { expr = true })
--- vim.api.nvim_set_keymap('i', '<S-TAB>', 'pumvisible() and "\\<C-p>" or "\\<S-TAB>"', { expr = true })
-
 -- キーバインドの変換
 vim.api.nvim_set_keymap('n', '<C-h>', '<S-Left>', {})
 vim.api.nvim_set_keymap('n', '<C-l>', '<S-Right>', {})
@@ -32,9 +28,8 @@ vim.api.nvim_set_keymap('i', '{<CR>', '{}<Left><CR><ESC><S-o', {})
 vim.api.nvim_set_keymap('i', '[<CR>', '[]<Left><CR><ESC><S-o', {})
 vim.api.nvim_set_keymap('i', '(', '()<Left><Esc>i', {})
 
--- copilotのキーマッピング
--- vim.api.nvim_set_keymap('i', '<C-[>', '<Plug>(copilot-previous)', {})
--- vim.api.nvim_set_keymap('i', '<C-]>', '<Plug>(copilot-next)', {})
-
--- クリップボードからペースト
 vim.api.nvim_set_keymap('n', '<D-v>', '"+p<CR>', {})
+
+-- nvim-tree
+vim.api.nvim_set_keymap('n', '<C-e>', ':NvimTreeToggle<CR>', {})
+vim.api.nvim_set_keymap('n', '<C-r>', ':NvimTreeRefres<CR>', {})

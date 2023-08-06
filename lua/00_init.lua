@@ -14,6 +14,7 @@ vim.o.ignorecase = true
 vim.o.scrolloff = 10
 vim.opt.helplang = 'ja', 'en'
 vim.opt.splitright = true
+vim.g.encoding="UTF-8"
 
 vim.opt.clipboard:append{'unnamedplus'}
 
@@ -37,3 +38,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 vim.g.gitgutter_highlight_lines = 0
 vim.cmd 'highlight GitGutterAdd ctermfg=green'
 vim.opt.updatetime = 1000
+
+-- tree setting
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
