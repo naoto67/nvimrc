@@ -95,6 +95,7 @@ packer.startup(function(use)
         sync_install = false,
         highlight = { enable = true },
         indent = { enable = true },
+				-- colorschema = "sonokai",
       })
     end,
     run = function()
@@ -102,6 +103,16 @@ packer.startup(function(use)
       ts_update()
     end,
   }
+
+	use 'sainnhe/sonokai'
+	use "rebelot/kanagawa.nvim"
+
+	use {
+		"tanvirtin/monokai.nvim",
+		config = function()
+			require('monokai').setup { palette = require('monokai').soda }
+    end,
+	}
 end)
 
 local function nvim_tree_on_attach(bufnr)
