@@ -13,8 +13,8 @@ cmp.setup({
   sources = {
     { name = 'copilot' },
     { name = "nvim_lsp" },--ソース類を設定
-    { name = 'vsnip' }, -- For vsnip users.
     { name = "buffer" },
+    { name = 'vsnip' }, -- For vsnip users.
     { name = "path" },
   },
   mapping = cmp.mapping.preset.insert({

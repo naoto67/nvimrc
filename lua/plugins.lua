@@ -8,7 +8,7 @@ packer.startup(function(use)
 
   use {
     "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
+		"williamboman/mason-lspconfig.nvim",
     "lukas-reineke/lsp-format.nvim",
     "neovim/nvim-lspconfig",
   }
@@ -74,6 +74,11 @@ packer.startup(function(use)
       'nvim-tree/nvim-web-devicons',
     },
   }
+
+	use { "ibhagwan/fzf-lua",
+	  -- optional for icon support
+	  requires = { "nvim-tree/nvim-web-devicons" }
+	}
 end)
 
 local function nvim_tree_on_attach(bufnr)
@@ -87,6 +92,7 @@ local function nvim_tree_on_attach(bufnr)
   vim.keymap.set('n', 'f', api.live_filter.start, { desc = 'filter', buffer = bufnr })
   vim.keymap.set('n', 'F', api.live_filter.clear, { desc = 'clear', buffer = bufnr })
   vim.keymap.set('n', 'H', api.tree.toggle_hidden_filter, { desc = 'clear', buffer = bufnr })
+  vim.keymap.set('n', 's', api.node.open.vertical, { desc = 'split vertical', buffer = bufnr })
 end
 
 

@@ -24,9 +24,9 @@ vim.api.nvim_set_keymap('n', '<S-f>', ':FzfLua live_grep<CR>', {})
 -- vim.api.nvim_set_keymap('i', '<C-y>', '<Plug>(neosnippet_expand_or_jump)', {})
 
 -- 括弧の自動挿入
-vim.api.nvim_set_keymap('i', '{<CR>', '{}<Left><CR><ESC><S-o', {})
-vim.api.nvim_set_keymap('i', '[<CR>', '[]<Left><CR><ESC><S-o', {})
-vim.api.nvim_set_keymap('i', '(', '()<Left><Esc>i', {})
+vim.api.nvim_set_keymap('i', '{<CR>', '{}<LEFT><CR><CR><UP>', {})
+vim.api.nvim_set_keymap('i', '[<CR>', '[]<LEFT><CR><CR><UP>', {})
+vim.api.nvim_set_keymap('i', '(<CR>', '()<LEFT>', {})
 
 vim.api.nvim_set_keymap('n', '<D-v>', '"+p<CR>', {})
 
