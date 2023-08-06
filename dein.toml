@@ -9,9 +9,7 @@ on_ft = 'toml'
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-
+[[plugins]] repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'mattn/emmet-vim'
 
@@ -67,7 +65,7 @@ repo = 'prabirshrestha/asyncomplete.vim'
 [[plugins]]
 repo = 'prabirshrestha/asyncomplete-lsp.vim'
 [[plugins]]
-repo = 'scrooloose/nerdtree'
+repo = 'preservim/nerdtree'
 [[plugins]]
 repo = 'mattn/vim-goimports'
 [[plugins]]
