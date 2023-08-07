@@ -57,7 +57,13 @@ packer.startup(function(use)
     },
   }
 
-  use 'nvimdev/lspsaga.nvim'
+  use {
+		'nvimdev/lspsaga.nvim',
+    after = "nvim-lspconfig",
+    config = function()
+      require('lspsaga').setup({})
+    end,
+	}
   -- use {
   --   'j-hui/fidget.nvim',
   --   tag = 'legacy',
@@ -141,6 +147,7 @@ require("nvim-tree").setup({
     group_empty = true,
   },
   filters = {
+		git_ignored = false,
     dotfiles = true,
   },
   live_filter = {

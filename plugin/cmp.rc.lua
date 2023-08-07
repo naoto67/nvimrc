@@ -20,7 +20,7 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ["<S-TAB>"] = cmp.mapping.select_prev_item(), --Ctrl+pで補完欄を一つ上に移動
     ["<TAB>"] = cmp.mapping.select_next_item(), --Ctrl+nで補完欄を一つ下に移動
-    ['<C-l>'] = cmp.mapping.complete(),
+    -- ['<C->'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     ["<Enter>"] = cmp.mapping.confirm({ select = true }),--Ctrl+yで補完を選択確定
   }),

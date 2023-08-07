@@ -7,19 +7,20 @@ local on_attach = function(client, bufnr)
   -- 下記ではデフォルトのキーバインドを設定しています
   -- ほかのLSPプラグインを使う場合（例：Lspsaga）は必要ないこともあります
 
+	local bufopts = { noremap=true, silent=true, buffer=bufnr }
   local set = vim.keymap.set
-  set("n", "vgd", "<cmd>:vsplit <CR> <cmd>lua vim.lsp.buf.definition()<CR>")
-  set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-  set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-  set("n", "<C-m>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-  set("n", "gy", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-  set("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-  set("n", "ma", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-  set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-  set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-  set("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
-  set("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>")
-  set("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>")
+  set("n", "vgd", "<cmd>:vsplit <CR> <cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
+  set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
+  set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", bufopts)
+  set("n", "<C-m>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", bufopts)
+  set("n", "gy", "<cmd>lua vim.lsp.buf.type_definition()<CR>", bufopts)
+  set("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", bufopts)
+  set("n", "ma", "<cmd>lua vim.lsp.buf.code_action()<CR>", bufopts)
+  set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", bufopts)
+  set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", bufopts)
+  -- set("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", bufopts)
+  set("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", bufopts)
+  set("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", bufopts)
 
 end
 
