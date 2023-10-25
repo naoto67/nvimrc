@@ -37,11 +37,29 @@ packer.startup(function(use)
 			event = "InsertEnter",
 			config = function()
 				require("copilot").setup({
-					suggestion = { enabled = false },
-					panel = { enabled = false },
+          server_opts_overrides = {
+            settings = {
+              advanced = {
+                listCount = 3, -- #completions for panel
+                inlineSuggestCount = 2, -- #completions for getCompletions
+              }
+            },
+          },
+					suggestion = { enabled = true },
+					panel = {
+            enabled = true,
+            -- keymap = {
+            --   jump_prev = "[[",
+            --   jump_next = "]]",
+            --   accept = "<CR>",
+            --   refresh = "gr",
+            --   open = "<M-CR>"
+            -- },
+          },
 					filetypes = {
 						markdown = true,
 						help = true,
+            go = true,
 					},
 				})
 			end,
@@ -98,7 +116,7 @@ packer.startup(function(use)
 			local configs = require("nvim-treesitter.configs")
 
 			configs.setup({
-				ensure_installed = { "go", "lua", "vim", "vimdoc", "query", "html" },
+				ensure_installed = { "go", "lua", "vim", "vimdoc", "query", "html", "yaml" },
 				sync_install = false,
 				highlight = { enable = true },
 				indent = { enable = true },
@@ -149,7 +167,14 @@ require("nvim-tree").setup({
 	},
 	filters = {
 		dotfiles = true,
+		git_ignored = false,
+    custom = {'node_modules', ".*mock_gen.go"},
 	},
+  filesystem_watchers = {
+    enable = true,
+    debounce_delay = 500,
+    ignore_dirs = {},
+  },
 	live_filter = {
 		prefix = "[FILTER]: ",
 		always_show_folders = false, -- Turn into false from true by default
@@ -162,6 +187,8 @@ local null_ls = require('null-ls')
 null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.goimports,
+		null_ls.builtins.formatting.terraform_fmt,
+		null_ls.builtins.formatting.cue_fmt,
 		-- null_ls.builtins.diagnostics.markdownlint_cli2,
 		-- null_ls.builtins.formatting.markdownlint,
 	},
