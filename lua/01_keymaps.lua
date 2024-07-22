@@ -25,10 +25,10 @@ vim.api.nvim_set_keymap('i', 'jj', '<Esc>', {})
 vim.api.nvim_set_keymap('i', 'kk', '<Esc>', {})
 
 -- FzfLuaコマンドのキーマッピング
-vim.api.nvim_set_keymap('n', '<C-f>', ':FzfLua files<CR>', {})
-vim.api.nvim_set_keymap('n', '<C-g>', ':FzfLua grep_project<CR>', {})
+vim.api.nvim_set_keymap('n', '<C-f>', ':FzfLua git_files<CR>', {})
+vim.api.nvim_set_keymap('n', '<C-g>', ':FzfLua live_grep<CR>', {})
 vim.api.nvim_set_keymap('n', '<C-b>', ':FzfLua buffers<CR>', {})
-vim.api.nvim_set_keymap('n', '<S-f>', ':FzfLua live_grep<CR>', {})
+vim.api.nvim_set_keymap('n', '<S-f>', ':FzfLua grep_project<CR>', {})
 
 -- snippetのキーバインド
 -- vim.api.nvim_set_keymap('i', '<C-y>', '<Plug>(neosnippet_expand_or_jump)', {})

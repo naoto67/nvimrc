@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/s11641/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/s11641/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/s11641/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/s11641/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/s11641/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/Users/s11641/.cache/nvim/packer_hererocks/2.1.1710088188/share/lua/5.1/?.lua;/Users/s11641/.cache/nvim/packer_hererocks/2.1.1710088188/share/lua/5.1/?/init.lua;/Users/s11641/.cache/nvim/packer_hererocks/2.1.1710088188/lib/luarocks/rocks-5.1/?.lua;/Users/s11641/.cache/nvim/packer_hererocks/2.1.1710088188/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/s11641/.cache/nvim/packer_hererocks/2.1.1710088188/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -101,7 +101,7 @@ _G.packer_plugins = {
     url = "https://github.com/zbirenbaum/copilot-cmp"
   },
   ["copilot.lua"] = {
-    config = { "\27LJ\2\n×\2\0\0\6\0\18\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\6\0005\4\4\0005\5\3\0=\5\5\4=\4\a\3=\3\t\0025\3\n\0=\3\v\0025\3\f\0005\4\r\0=\4\14\3=\3\15\0025\3\16\0=\3\17\2B\0\2\1K\0\1\0\14filetypes\1\0\3\thelp\2\rmarkdown\2\ago\2\npanel\vkeymap\1\0\5\14jump_prev\a[[\frefresh\agr\topen\v<M-CR>\14jump_next\a]]\vaccept\t<CR>\1\0\1\fenabled\2\15suggestion\1\0\1\fenabled\2\26server_opts_overrides\1\0\0\rsettings\1\0\0\radvanced\1\0\0\1\0\2\23inlineSuggestCount\3\2\14listCount\3\3\nsetup\fcopilot\frequire\0" },
+    config = { "\27LJ\2\nÑ\2\0\0\6\0\16\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\6\0005\4\4\0005\5\3\0=\5\5\4=\4\a\3=\3\t\0025\3\n\0=\3\v\0025\3\f\0=\3\r\0025\3\14\0=\3\15\2B\0\2\1K\0\1\0\14filetypes\1\0\3\thelp\2\rmarkdown\2\ago\2\npanel\1\0\1\fenabled\2\15suggestion\1\0\1\fenabled\2\26server_opts_overrides\1\0\4\14filetypes\0\15suggestion\0\26server_opts_overrides\0\npanel\0\rsettings\1\0\1\rsettings\0\radvanced\1\0\1\radvanced\0\1\0\2\23inlineSuggestCount\3\2\14listCount\3\3\nsetup\fcopilot\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -152,7 +152,7 @@ _G.packer_plugins = {
     url = "https://github.com/williamboman/mason.nvim"
   },
   ["monokai.nvim"] = {
-    config = { "\27LJ\2\n]\0\0\6\0\6\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0006\3\0\0'\5\1\0B\3\2\0029\3\3\3=\3\5\2B\0\2\1K\0\1\0\fpalette\1\0\0\tsoda\nsetup\fmonokai\frequire\0" },
+    config = { "\27LJ\2\nf\0\0\6\0\6\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0006\3\0\0'\5\1\0B\3\2\0029\3\3\3=\3\5\2B\0\2\1K\0\1\0\fpalette\1\0\1\fpalette\0\tsoda\nsetup\fmonokai\frequire\0" },
     loaded = true,
     path = "/Users/s11641/.local/share/nvim/site/pack/packer/start/monokai.nvim",
     url = "https://github.com/tanvirtin/monokai.nvim"
@@ -178,7 +178,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    config = { "\27LJ\2\nÐ\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\0035\4\b\0=\4\t\3B\1\2\1K\0\1\0\vindent\1\0\1\venable\2\14highlight\1\0\1\venable\2\21ensure_installed\1\0\1\17sync_install\1\1\b\0\0\ago\blua\bvim\vvimdoc\nquery\thtml\tyaml\nsetup\28nvim-treesitter.configs\frequire\0" },
+    config = { "\27LJ\2\ný\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\0035\4\b\0=\4\t\3B\1\2\1K\0\1\0\vindent\1\0\1\venable\2\14highlight\1\0\1\venable\2\21ensure_installed\1\0\4\vindent\0\17sync_install\1\14highlight\0\21ensure_installed\0\1\t\0\0\ago\blua\bvim\vvimdoc\nquery\thtml\tyaml\fgraphql\nsetup\28nvim-treesitter.configs\frequire\0" },
     loaded = true,
     path = "/Users/s11641/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
@@ -220,14 +220,14 @@ time([[Defining packer_plugins]], false)
 time([[Config for copilot-cmp]], true)
 try_loadstring("\27LJ\2\n=\0\2\6\0\3\0\a6\2\0\0'\4\1\0B\2\2\0029\3\2\2\18\5\1\0B\3\2\1K\0\1\0\nsetup\16copilot_cmp\frequire\0", "config", "copilot-cmp")
 time([[Config for copilot-cmp]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\nÐ\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\0035\4\b\0=\4\t\3B\1\2\1K\0\1\0\vindent\1\0\1\venable\2\14highlight\1\0\1\venable\2\21ensure_installed\1\0\1\17sync_install\1\1\b\0\0\ago\blua\bvim\vvimdoc\nquery\thtml\tyaml\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
-time([[Config for nvim-treesitter]], false)
 -- Config for: monokai.nvim
 time([[Config for monokai.nvim]], true)
-try_loadstring("\27LJ\2\n]\0\0\6\0\6\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0006\3\0\0'\5\1\0B\3\2\0029\3\3\3=\3\5\2B\0\2\1K\0\1\0\fpalette\1\0\0\tsoda\nsetup\fmonokai\frequire\0", "config", "monokai.nvim")
+try_loadstring("\27LJ\2\nf\0\0\6\0\6\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0006\3\0\0'\5\1\0B\3\2\0029\3\3\3=\3\5\2B\0\2\1K\0\1\0\fpalette\1\0\1\fpalette\0\tsoda\nsetup\fmonokai\frequire\0", "config", "monokai.nvim")
 time([[Config for monokai.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+try_loadstring("\27LJ\2\ný\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\0035\4\b\0=\4\t\3B\1\2\1K\0\1\0\vindent\1\0\1\venable\2\14highlight\1\0\1\venable\2\21ensure_installed\1\0\4\vindent\0\17sync_install\1\14highlight\0\21ensure_installed\0\1\t\0\0\ago\blua\bvim\vvimdoc\nquery\thtml\tyaml\fgraphql\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
+time([[Config for nvim-treesitter]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-lspconfig ]]

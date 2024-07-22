@@ -31,6 +31,21 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- ⇑上記のupdate_capabilities(...)の関数は非推奨となり、代わりにdefault_capabilities()関数が採用されました。日本語情報が少ないため、念の為併記してメモしておきます。
 
 -- この一連の記述で、mason.nvimでインストールしたLanguage Serverが自動的に個別にセットアップされ、利用可能になります
+require("lspconfig").gopls.setup({
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+        shadow = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+      completeUnimported = true,
+      completionDocumentation = true,
+      deepCompletion = true,
+    },
+  },
+})
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("mason-lspconfig").setup_handlers {

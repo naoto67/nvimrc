@@ -116,7 +116,7 @@ packer.startup(function(use)
 			local configs = require("nvim-treesitter.configs")
 
 			configs.setup({
-				ensure_installed = { "go", "lua", "vim", "vimdoc", "query", "html", "yaml" },
+				ensure_installed = { "go", "lua", "vim", "vimdoc", "query", "html", "yaml", "graphql" },
 				sync_install = false,
 				highlight = { enable = true },
 				indent = { enable = true },
