@@ -1,8 +1,5 @@
 -- キーバインドの変換
-vim.api.nvim_set_keymap('n', '<C-h>', '<S-Left>', {})
-vim.api.nvim_set_keymap('n', '<C-l>', '<S-Right>', {})
-vim.api.nvim_set_keymap('n', '<S-h>', '<S-Left>', {})
-vim.api.nvim_set_keymap('n', '<S-l>', '<S-Right>', {})
+vim.api.nvim_set_keymap('n', '<C-h>', '<S-Left>', {}) vim.api.nvim_set_keymap('n', '<C-l>', '<S-Right>', {}) vim.api.nvim_set_keymap('n', '<S-h>', '<S-Left>', {}) vim.api.nvim_set_keymap('n', '<S-l>', '<S-Right>', {})
 vim.api.nvim_set_keymap('n', '<C-j>', '<C-d>', {})
 vim.api.nvim_set_keymap('n', '<C-k>', '<C-u>', {})
 vim.api.nvim_set_keymap('n', 'ww', ':w<CR>', {})
@@ -46,3 +43,10 @@ vim.api.nvim_set_keymap('n', '<C-e>', ':NvimTreeFindFileToggle<CR>', {})
 vim.api.nvim_set_keymap('n', '<C-r>', ':NvimTreeRefres<CR>', {})
 
 vim.api.nvim_set_keymap('n', "<space>e", ":Lspsaga show_workspace_diagnostics<CR>", {})
+
+-- vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
+vim.api.nvim_set_keymap("i", "<C-t>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+
+vim.api.nvim_set_keymap("n", "<leader>tt", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr> <cmd>lua require('neotest').output_panel.toggle()<cr>", {})
+vim.api.nvim_set_keymap("n", "<leader>tr", "<cmd>lua require('neotest').run.run({})<cr> <cmd>lua require('neotest').output_panel.toggle()<cr>", {})
+vim.api.nvim_set_keymap("n", "<leader>to", "<cmd>lua require('neotest').output_panel.toggle()<cr>", {})

@@ -22,7 +22,7 @@ cmp.setup({
 			-- end,
 		},            --ソース類を設定
 		-- { name = "buffer" },
-		{ name = 'copilot',  group_index = 2 },
+		-- { name = 'copilot',  group_index = 2 },
 		{ name = "path" },
 	},
 	mapping = cmp.mapping.preset.insert({

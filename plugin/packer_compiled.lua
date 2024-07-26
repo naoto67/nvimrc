@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["FixCursorHold.nvim"] = {
+    loaded = true,
+    path = "/Users/s11641/.local/share/nvim/site/pack/packer/start/FixCursorHold.nvim",
+    url = "https://github.com/antoinemadec/FixCursorHold.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/s11641/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -94,19 +99,11 @@ _G.packer_plugins = {
     path = "/Users/s11641/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
     url = "https://github.com/hrsh7th/cmp-vsnip"
   },
-  ["copilot-cmp"] = {
-    config = { "\27LJ\2\n=\0\2\6\0\3\0\a6\2\0\0'\4\1\0B\2\2\0029\3\2\2\18\5\1\0B\3\2\1K\0\1\0\nsetup\16copilot_cmp\frequire\0" },
+  ["copilot.vim"] = {
+    config = { "\27LJ\2\n4\0\0\2\0\3\0\0056\0\0\0009\0\1\0+\1\2\0=\1\2\0K\0\1\0\23copilot_no_tab_map\6g\bvim\0" },
     loaded = true,
-    path = "/Users/s11641/.local/share/nvim/site/pack/packer/start/copilot-cmp",
-    url = "https://github.com/zbirenbaum/copilot-cmp"
-  },
-  ["copilot.lua"] = {
-    config = { "\27LJ\2\nÑ\2\0\0\6\0\16\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\6\0005\4\4\0005\5\3\0=\5\5\4=\4\a\3=\3\t\0025\3\n\0=\3\v\0025\3\f\0=\3\r\0025\3\14\0=\3\15\2B\0\2\1K\0\1\0\14filetypes\1\0\3\thelp\2\rmarkdown\2\ago\2\npanel\1\0\1\fenabled\2\15suggestion\1\0\1\fenabled\2\26server_opts_overrides\1\0\4\14filetypes\0\15suggestion\0\26server_opts_overrides\0\npanel\0\rsettings\1\0\1\rsettings\0\radvanced\1\0\1\radvanced\0\1\0\2\23inlineSuggestCount\3\2\14listCount\3\3\nsetup\fcopilot\frequire\0" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/Users/s11641/.local/share/nvim/site/pack/packer/opt/copilot.lua",
-    url = "https://github.com/zbirenbaum/copilot.lua"
+    path = "/Users/s11641/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    url = "https://github.com/github/copilot.vim"
   },
   ["fzf-lua"] = {
     loaded = true,
@@ -151,11 +148,30 @@ _G.packer_plugins = {
     path = "/Users/s11641/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["mini.indentscope"] = {
+    config = { "\27LJ\2\n¡\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\tdraw\1\0\1\ndelay\3¬\2\foptions\1\0\2\foptions\0\tdraw\0\1\0\2\21indent_at_cursor\2\18try_as_border\2\nsetup\21mini.indentscope\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/Users/s11641/.local/share/nvim/site/pack/packer/opt/mini.indentscope",
+    url = "https://github.com/echasnovski/mini.indentscope"
+  },
   ["monokai.nvim"] = {
     config = { "\27LJ\2\nf\0\0\6\0\6\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0006\3\0\0'\5\1\0B\3\2\0029\3\3\3=\3\5\2B\0\2\1K\0\1\0\fpalette\1\0\1\fpalette\0\tsoda\nsetup\fmonokai\frequire\0" },
     loaded = true,
     path = "/Users/s11641/.local/share/nvim/site/pack/packer/start/monokai.nvim",
     url = "https://github.com/tanvirtin/monokai.nvim"
+  },
+  neotest = {
+    config = { "\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0" },
+    loaded = true,
+    path = "/Users/s11641/.local/share/nvim/site/pack/packer/start/neotest",
+    url = "https://github.com/nvim-neotest/neotest"
+  },
+  ["neotest-go"] = {
+    loaded = true,
+    path = "/Users/s11641/.local/share/nvim/site/pack/packer/start/neotest-go",
+    url = "https://github.com/nvim-neotest/neotest-go"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -172,13 +188,18 @@ _G.packer_plugins = {
     path = "/Users/s11641/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-nio"] = {
+    loaded = true,
+    path = "/Users/s11641/.local/share/nvim/site/pack/packer/start/nvim-nio",
+    url = "https://github.com/nvim-neotest/nvim-nio"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/Users/s11641/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
     url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    config = { "\27LJ\2\ný\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\0035\4\b\0=\4\t\3B\1\2\1K\0\1\0\vindent\1\0\1\venable\2\14highlight\1\0\1\venable\2\21ensure_installed\1\0\4\vindent\0\17sync_install\1\14highlight\0\21ensure_installed\0\1\t\0\0\ago\blua\bvim\vvimdoc\nquery\thtml\tyaml\fgraphql\nsetup\28nvim-treesitter.configs\frequire\0" },
+    config = { "\27LJ\2\ný\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\0035\4\b\0=\4\t\3B\1\2\1K\0\1\0\vindent\1\0\1\venable\2\14highlight\1\0\1\venable\2\21ensure_installed\1\0\4\vindent\0\21ensure_installed\0\14highlight\0\17sync_install\1\1\t\0\0\ago\blua\bvim\vvimdoc\nquery\thtml\tyaml\fgraphql\nsetup\28nvim-treesitter.configs\frequire\0" },
     loaded = true,
     path = "/Users/s11641/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
@@ -203,6 +224,12 @@ _G.packer_plugins = {
     path = "/Users/s11641/.local/share/nvim/site/pack/packer/start/sonokai",
     url = "https://github.com/sainnhe/sonokai"
   },
+  ["toggleterm.nvim"] = {
+    config = { "\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0" },
+    loaded = true,
+    path = "/Users/s11641/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
+    url = "https://github.com/akinsho/toggleterm.nvim"
+  },
   ["vim-gitgutter"] = {
     loaded = true,
     path = "/Users/s11641/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
@@ -216,18 +243,26 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: copilot-cmp
-time([[Config for copilot-cmp]], true)
-try_loadstring("\27LJ\2\n=\0\2\6\0\3\0\a6\2\0\0'\4\1\0B\2\2\0029\3\2\2\18\5\1\0B\3\2\1K\0\1\0\nsetup\16copilot_cmp\frequire\0", "config", "copilot-cmp")
-time([[Config for copilot-cmp]], false)
 -- Config for: monokai.nvim
 time([[Config for monokai.nvim]], true)
 try_loadstring("\27LJ\2\nf\0\0\6\0\6\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0006\3\0\0'\5\1\0B\3\2\0029\3\3\3=\3\5\2B\0\2\1K\0\1\0\fpalette\1\0\1\fpalette\0\tsoda\nsetup\fmonokai\frequire\0", "config", "monokai.nvim")
 time([[Config for monokai.nvim]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
+time([[Config for toggleterm.nvim]], false)
+-- Config for: copilot.vim
+time([[Config for copilot.vim]], true)
+try_loadstring("\27LJ\2\n4\0\0\2\0\3\0\0056\0\0\0009\0\1\0+\1\2\0=\1\2\0K\0\1\0\23copilot_no_tab_map\6g\bvim\0", "config", "copilot.vim")
+time([[Config for copilot.vim]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\ný\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\0035\4\b\0=\4\t\3B\1\2\1K\0\1\0\vindent\1\0\1\venable\2\14highlight\1\0\1\venable\2\21ensure_installed\1\0\4\vindent\0\17sync_install\1\14highlight\0\21ensure_installed\0\1\t\0\0\ago\blua\bvim\vvimdoc\nquery\thtml\tyaml\fgraphql\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
+try_loadstring("\27LJ\2\ný\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\0035\4\b\0=\4\t\3B\1\2\1K\0\1\0\vindent\1\0\1\venable\2\14highlight\1\0\1\venable\2\21ensure_installed\1\0\4\vindent\0\21ensure_installed\0\14highlight\0\17sync_install\1\1\t\0\0\ago\blua\bvim\vvimdoc\nquery\thtml\tyaml\fgraphql\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
 time([[Config for nvim-treesitter]], false)
+-- Config for: neotest
+time([[Config for neotest]], true)
+try_loadstring("\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0", "config", "neotest")
+time([[Config for neotest]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-lspconfig ]]
@@ -241,7 +276,8 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'copilot.lua'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'mini.indentscope'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'mini.indentscope'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 

@@ -12,6 +12,38 @@ packer.startup(function(use)
 		"lukas-reineke/lsp-format.nvim",
 		"neovim/nvim-lspconfig",
 	}
+  use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+    require("toggleterm").setup()
+  end}
+  -- use {
+  --   "lukas-reineke/indent-blankline.nvim"
+  --   config = function()
+  --     require("ibl").setup {}
+  --   end,
+  -- }
+  use {
+    "echasnovski/mini.indentscope",
+    event = { "BufRead", "BufNewFile" },
+    config = function()
+      require("mini.indentscope").setup({
+          options = {
+            try_as_border = true,
+            indent_at_cursor = true,
+          },
+          draw = {
+            delay = 300,
+            -- animation = require("mini.indentscope").gen_animation.none(),
+          },
+          -- mappings = {
+          --   object_scope = "ii",
+          --   object_scope_with_border = "ai",
+          --   goto_top = "[i",
+          --   goto_bottom = "]i",
+          -- },
+          -- symbol = "󰍳",
+        })
+    end,
+  }
 
 	-- format
 	use {
@@ -30,49 +62,62 @@ packer.startup(function(use)
 		'hrsh7th/cmp-vsnip',  --スニペットを補完ソースに
 		'onsails/lspkind.nvim', --補完欄にアイコンを表示
 
-		{
-			"zbirenbaum/copilot.lua",
-			-- cmd = "Copilot",
-			build = ":Copilot auth",
-			event = "InsertEnter",
-			config = function()
-				require("copilot").setup({
-          server_opts_overrides = {
-            settings = {
-              advanced = {
-                listCount = 3, -- #completions for panel
-                inlineSuggestCount = 2, -- #completions for getCompletions
-              }
-            },
-          },
-					suggestion = { enabled = true },
-					panel = {
-            enabled = true,
-            -- keymap = {
-            --   jump_prev = "[[",
-            --   jump_next = "]]",
-            --   accept = "<CR>",
-            --   refresh = "gr",
-            --   open = "<M-CR>"
-            -- },
-          },
-					filetypes = {
-						markdown = true,
-						help = true,
-            go = true,
-					},
-				})
-			end,
-		},
-		{
-			"zbirenbaum/copilot-cmp",
-			dependencies = "copilot.lua",
-			opts = {},
-			config = function(_, opts)
-				local copilot_cmp = require("copilot_cmp")
-				copilot_cmp.setup(opts)
-			end,
-		},
+    {
+      "github/copilot.vim",
+      config = function()
+        -- vim.g.copilot_no_tab_map = true
+        vim.g.copilot_no_tab_map = true
+      end,
+    },
+    -- {
+    --   'VonHeikemen/fine-cmdline.nvim',
+    --   requires = {
+    --     {'MunifTanjim/nui.nvim'}
+    --   },
+    -- },
+		-- {
+		-- 	"zbirenbaum/copilot.lua",
+		-- 	-- cmd = "Copilot",
+		-- 	build = ":Copilot auth",
+		-- 	event = "InsertEnter",
+		-- 	config = function()
+		-- 		require("copilot").setup({
+    --       server_opts_overrides = {
+    --         settings = {
+    --           advanced = {
+    --             listCount = 3, -- #completions for panel
+    --             inlineSuggestCount = 2, -- #completions for getCompletions
+    --           }
+    --         },
+    --       },
+		-- 			suggestion = { enabled = true },
+		-- 			panel = {
+    --         enabled = true,
+    --         -- keymap = {
+    --         --   jump_prev = "[[",
+    --         --   jump_next = "]]",
+    --         --   accept = "<CR>",
+    --         --   refresh = "gr",
+    --         --   open = "<M-CR>"
+    --         -- },
+    --       },
+		-- 			filetypes = {
+		-- 				markdown = true,
+		-- 				help = true,
+    --         go = true,
+		-- 			},
+		-- 		})
+		-- 	end,
+		-- },
+		-- {
+		-- 	"zbirenbaum/copilot-cmp",
+		-- 	dependencies = "copilot.lua",
+		-- 	opts = {},
+		-- 	config = function(_, opts)
+		-- 		local copilot_cmp = require("copilot_cmp")
+		-- 		copilot_cmp.setup(opts)
+		-- 	end,
+		-- },
 	}
 
 
@@ -138,6 +183,21 @@ packer.startup(function(use)
 			require('monokai').setup { palette = require('monokai').soda }
 		end,
 	}
+
+  -- use 'mfussenegger/nvim-dap'
+  -- use 'leoluz/nvim-dap-go'
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-neotest/neotest-go",
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter"
+    },
+    config = function()
+    end,
+  }
 end)
 
 local function nvim_tree_on_attach(bufnr)
@@ -206,4 +266,53 @@ null_ls.setup({
 			})
 		end
 	end,
+})
+-- local fineline = require('fine-cmdline')
+-- local fn = fineline.fn
+--
+-- fineline.setup({
+--   cmdline = {
+--     -- Prompt can influence the completion engine.
+--     -- Change it to something that works for you
+--     prompt = ': ',
+--
+--     -- Let the user handle the keybindings
+--     enable_keymaps = true
+--   },
+--   popup = {
+--     buf_options = {
+--       -- Setup a special file type if you need to
+--       filetype = 'FineCmdlinePrompt'
+--     }
+--   },
+--   hooks = {
+--     set_keymaps = function(imap, feedkeys)
+--       -- Restore default keybindings...
+--       -- Except for `<Tab>`, that's what everyone uses to autocomplete
+--       imap('<Esc>', fn.close)
+--
+--       imap('<Up>', fn.up_search_history)
+--       imap('<Down>', fn.down_search_history)
+--     end
+--   }
+-- })
+--
+--
+--
+      -- get neotest namespace (api call creates or returns namespace)
+local neotest_ns = vim.api.nvim_create_namespace("neotest")
+vim.diagnostic.config({
+  virtual_text = {
+    format = function(diagnostic)
+      local message =
+        diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+      return message
+    end,
+  },
+}, neotest_ns)
+require("neotest").setup({
+  -- your neotest config here
+  adapters = {
+    require("neotest-go"),
+  },
 })
