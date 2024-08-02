@@ -47,6 +47,12 @@ vim.api.nvim_set_keymap('n', "<space>e", ":Lspsaga show_workspace_diagnostics<CR
 -- vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
 vim.api.nvim_set_keymap("i", "<C-t>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
+-- vim.api.nvim_set_keymap("n", "<leader>tt", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", {})
 vim.api.nvim_set_keymap("n", "<leader>tt", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr> <cmd>lua require('neotest').output_panel.toggle()<cr>", {})
+-- 動くようにしたい
+-- vim.api.nvim_set_keymap("n", "<leader>tT", "<cmd>lua require('neotest').run.run(vim.fn.expand(vim.loop.cwd()))<cr> <cmd>lua require('neotest').output_panel.toggle()<cr>", {})
 vim.api.nvim_set_keymap("n", "<leader>tr", "<cmd>lua require('neotest').run.run({})<cr> <cmd>lua require('neotest').output_panel.toggle()<cr>", {})
-vim.api.nvim_set_keymap("n", "<leader>to", "<cmd>lua require('neotest').output_panel.toggle()<cr>", {})
+vim.api.nvim_set_keymap("n", "<leader>tl", "<cmd>lua require('neotest').run.run_last({})<cr> <cmd>lua require('neotest').output_panel.toggle()<cr>", {})
+vim.api.nvim_set_keymap("n", "<leader>tc", "<cmd>lua require('neotest').output_panel.clear()<cr> <cmd>lua require('neotest').output_panel.close()<cr>", {})
+vim.api.nvim_set_keymap("n", "<leader>to", "<cmd>lua require('neotest').output.open({ enter = true, auto_close = true })<cr>", {})
+vim.api.nvim_set_keymap("n", "<leader>tO", "<cmd>lua require('neotest').output_panel.toggle()<cr>", {})
