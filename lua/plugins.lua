@@ -4,6 +4,9 @@ packer = require("packer")
 packer.startup(function(use)
 	use("airblade/vim-gitgutter")
 
+	use("ray-x/go.nvim")
+	use("ray-x/guihua.lua")
+
 	use({ "wbthomason/packer.nvim", opt = false })
 
 	use({
@@ -411,3 +414,20 @@ vim.keymap.set("n", "<leader>trr", function()
 	return pantran.motion_translate() .. "_"
 end, opts)
 vim.keymap.set("x", "<leader>trr", pantran.motion_translate, opts)
+require("guihua").setup({})
+require("go").setup({
+	lsp_cfg = false,
+	lsp_on_attach = false,
+	lsp_gofumpt = false,
+	test_runner = "go",
+	run_in_floaterm = true,
+	gotests_template_dir = "/Users/s11641/Project/journey/server/templates/mockunit",
+})
+require("fzf-lua").setup({
+	files = {
+		rg_opts = [[--color=never --files --hidden --follow -g "!{node_modules/*,.git/*}"]],
+	},
+	grep = {
+		rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=1024 -e",
+	},
+})
