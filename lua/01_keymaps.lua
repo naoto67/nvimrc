@@ -1,68 +1,42 @@
+local keymap_opts = { noremap = true, silent = false }
+
 -- キーバインドの変換
-vim.api.nvim_set_keymap("n", "<C-h>", "<S-Left>", {})
-vim.api.nvim_set_keymap("n", "<C-l>", "<S-Right>", {})
-vim.api.nvim_set_keymap("n", "<S-h>", "<S-Left>", {})
-vim.api.nvim_set_keymap("n", "<S-l>", "<S-Right>", {})
-vim.api.nvim_set_keymap("n", "<C-j>", "<C-d>", {})
-vim.api.nvim_set_keymap("n", "<C-k>", "<C-u>", {})
-vim.api.nvim_set_keymap("n", "ww", ":w<CR>", {})
-vim.api.nvim_set_keymap("n", "qq", ":q<CR>", {})
-vim.api.nvim_set_keymap("n", "<S-u>", ":red<CR>", {})
-vim.api.nvim_set_keymap("v", "<C-h>", "<S-Left>", {})
-vim.api.nvim_set_keymap("v", "<C-l>", "<S-Right>", {})
-vim.api.nvim_set_keymap("v", "<S-h>", "<S-Left>", {})
-vim.api.nvim_set_keymap("v", "<S-l>", "<S-Right>", {})
-vim.api.nvim_set_keymap("v", "<C-j>", "<C-d>", {})
-vim.api.nvim_set_keymap("v", "<C-k>", "<C-u>", {})
-vim.api.nvim_set_keymap("v", "ww", ":w<CR>", {})
-vim.api.nvim_set_keymap("v", "qq", ":q<CR>", {})
-vim.api.nvim_set_keymap("v", "<S-u>", ":red<CR>", {})
-vim.api.nvim_set_keymap("i", "<C-j>", "<down>", {})
-vim.api.nvim_set_keymap("i", "<C-k>", "<up>", {})
-vim.api.nvim_set_keymap("i", "<C-h>", "<left>", {})
-vim.api.nvim_set_keymap("i", "<C-l>", "<right>", {})
-vim.api.nvim_set_keymap("i", "jj", "<Esc>", {})
-vim.api.nvim_set_keymap("i", "kk", "<Esc>", {})
-
--- FzfLuaコマンドのキーマッピング
-vim.api.nvim_set_keymap("n", "<C-f>", ":FzfLua files<CR>", {})
-vim.api.nvim_set_keymap("n", "<C-g>", ":FzfLua live_grep<CR>", {})
-vim.api.nvim_set_keymap("n", "<C-b>", ":FzfLua buffers<CR>", {})
-vim.api.nvim_set_keymap("n", "<S-f>", ":FzfLua grep_project<CR>", {})
-
--- snippetのキーバインド
--- vim.api.nvim_set_keymap('i', '<C-y>', '<Plug>(neosnippet_expand_or_jump)', {})
-
--- 括弧の自動挿入
--- vim.api.nvim_set_keymap('i', '{<CR>', '{}<LEFT><CR><CR><UP>', {})
--- vim.api.nvim_set_keymap('i', '[<CR>', '[]<LEFT><CR><CR><UP>', {})
--- vim.api.nvim_set_keymap('i', '(<CR>', '()<LEFT>', {})
-
-vim.api.nvim_set_keymap("n", "<D-v>", '"+p<CR>', {})
+vim.api.nvim_set_keymap("n", "<C-h>", "<S-Left>", keymap_opts)
+vim.api.nvim_set_keymap("n", "<C-l>", "<S-Right>", keymap_opts)
+vim.api.nvim_set_keymap("n", "<S-h>", "<S-Left>", keymap_opts)
+vim.api.nvim_set_keymap("n", "<S-l>", "<S-Right>", keymap_opts)
+vim.api.nvim_set_keymap("n", "<C-j>", "<C-d>", keymap_opts)
+vim.api.nvim_set_keymap("n", "<C-k>", "<C-u>", keymap_opts)
+vim.api.nvim_set_keymap("n", "ww", ":w<CR>", keymap_opts)
+vim.api.nvim_set_keymap("n", "qq", ":q<CR>", keymap_opts)
+vim.api.nvim_set_keymap("n", "<S-u>", ":red<CR>", keymap_opts)
+vim.api.nvim_set_keymap("v", "<C-h>", "<S-Left>", keymap_opts)
+vim.api.nvim_set_keymap("v", "<C-l>", "<S-Right>", keymap_opts)
+vim.api.nvim_set_keymap("v", "<S-h>", "<S-Left>", keymap_opts)
+vim.api.nvim_set_keymap("v", "<S-l>", "<S-Right>", keymap_opts)
+vim.api.nvim_set_keymap("v", "<C-j>", "<C-d>", keymap_opts)
+vim.api.nvim_set_keymap("v", "<C-k>", "<C-u>", keymap_opts)
+vim.api.nvim_set_keymap("v", "ww", ":w<CR>", keymap_opts)
+vim.api.nvim_set_keymap("v", "qq", ":q<CR>", keymap_opts)
+vim.api.nvim_set_keymap("v", "<S-u>", ":red<CR>", keymap_opts)
+vim.api.nvim_set_keymap("i", "<C-j>", "<down>", keymap_opts)
+vim.api.nvim_set_keymap("i", "<C-k>", "<up>", keymap_opts)
+vim.api.nvim_set_keymap("i", "<C-h>", "<left>", keymap_opts)
+vim.api.nvim_set_keymap("i", "<C-l>", "<right>", keymap_opts)
+vim.api.nvim_set_keymap("i", "jj", "<Esc>", keymap_opts)
+vim.api.nvim_set_keymap("i", "kk", "<Esc>", keymap_opts)
 
 -- nvim-tree
-vim.api.nvim_set_keymap("n", "<C-E>", ":NvimTreeToggle<CR>", {})
-vim.api.nvim_set_keymap("n", "<C-e>", ":NvimTreeFindFileToggle<CR>", {})
-vim.api.nvim_set_keymap("n", "<C-r>", ":NvimTreeRefres<CR>", {})
+vim.api.nvim_set_keymap("n", "<C-E>", ":NvimTreeToggle<CR>", keymap_opts)
+vim.api.nvim_set_keymap("n", "<C-e>", ":NvimTreeFindFileToggle<CR>", keymap_opts)
+vim.api.nvim_set_keymap("n", "<C-r>", ":NvimTreeRefres<CR>", keymap_opts)
 
-vim.api.nvim_set_keymap("n", "<space>e", ":Lspsaga show_workspace_diagnostics<CR>", {})
+vim.keymap.set("n", "<leader>tt", "<cmd>:GoTest -p -a -test.count=1<cr>", keymap_opts)
+vim.keymap.set("n", "<leader>tr", "<cmd>:GoTest -n -a -test.count=1<cr>", keymap_opts)
+vim.keymap.set("n", "<leader>tf", "<cmd>:GoTest -f -a -test.count=1<cr>", keymap_opts)
+vim.keymap.set("n", "<leader>tc", "<cmd>:GoTermClose<cr>", keymap_opts)
+vim.keymap.set("n", "<leader>gg", "<cmd>:GoGenerate<cr>", keymap_opts)
 
--- vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
+vim.keymap.set("n", "<leader>gl", "<cmd>:LazyGit<cr>", keymap_opts)
+
 vim.api.nvim_set_keymap("i", "<C-t>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-
--- vim.api.nvim_set_keymap("n", "<leader>tt", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", {})
--- current package
-vim.api.nvim_set_keymap("n", "<leader>tt", "<cmd>:GoTest -p -a -test.count=1<cr>", {})
--- nerest
-vim.api.nvim_set_keymap("n", "<leader>tr", "<cmd>:GoTest -n -a -test.count=1<cr>", {})
--- current file
-vim.api.nvim_set_keymap("n", "<leader>tf", "<cmd>:GoTest -f -a -test.count=1<cr>", {})
---vim.api.nvim_set_keymap(
---	"n",
---	"<leader>tl",
---	"<cmd>lua require('neotest').run.run_last({})<cr> <cmd>lua require('neotest').output_panel.toggle()<cr>",
---	{}
---)
-vim.api.nvim_set_keymap("n", "<leader>tc", "<cmd>:GoTermClose<cr>", {})
-vim.api.nvim_set_keymap("n", "<leader>tO", "<cmd>lua require('neotest').output_panel.toggle()<cr>", {})
-vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>:GoGenerate<cr>", {})
