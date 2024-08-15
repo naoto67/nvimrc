@@ -52,6 +52,7 @@ return {
 
 					"goimports",
 					"golangci-lint",
+					"golangci-lint-langserver",
 					"prettierd",
 					"prettier",
 					"actionlint",
@@ -97,6 +98,14 @@ return {
 				on_attach = on_attach,
 				capabilities = capabilities,
 			})
+			lspconfig.golangci_lint_ls.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+				filetypes = { "go", "gomod" },
+				init_options = {
+					command = { "golangci-lint", "run", "--out-format", "json" },
+				},
+			})
 		end,
 	},
 
@@ -123,8 +132,14 @@ return {
 			"hrsh7th/cmp-buffer", --bufferを補完ソースに
 			"hrsh7th/cmp-path", --pathを補完ソースに
 			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-vsnip", --スニペットを補完ソースに
 			"onsails/lspkind.nvim", --補完欄にアイコンを表示
+			"saadparwaiz1/cmp_luasnip", --スニペットを補完ソースに
+			{
+				"L3MON4D3/LuaSnip",
+				build = "make install_jsregexp",
+				dependencies = "rafamadriz/friendly-snippets",
+				config = function() end,
+			},
 		},
 		event = { "InsertEnter", "LspAttach" },
 		config = function()
@@ -135,7 +150,7 @@ return {
 			cmp.setup({
 				snippet = {
 					expand = function(args)
-						vim.fn["vsnip#anonymous"](args.body)
+						require("luasnip").lsp_expand(args.body)
 					end,
 				},
 				window = {
@@ -160,8 +175,8 @@ return {
 				mapping = cmp.mapping.preset.insert({
 					["<S-TAB>"] = cmp.mapping.select_prev_item(), --Ctrl+pで補完欄を一つ上に移動
 					["<TAB>"] = cmp.mapping.select_next_item(), --Ctrl+nで補完欄を一つ下に移動
-					-- ['<C-l>'] = cmp.mapping.complete(),
-					["<C-e>"] = cmp.mapping.abort(),
+					["<C-Space>"] = cmp.mapping.complete(),
+					-- ["<C-e>"] = cmp.mapping.abort(),
 					["<CR>"] = cmp.mapping.confirm({ select = true }), --Ctrl+yで補完を選択確定
 				}),
 				experimental = {
@@ -215,6 +230,7 @@ return {
 					"css",
 					"javascript",
 					"typescript",
+					"terraform",
 				},
 				sync_install = false,
 				auto_install = false,
@@ -501,6 +517,7 @@ return {
 						"^.git/[^c][^o][^n][^f][^i][^g]",
 						"^.git/[^h][^o][^o][^k][^s]",
 					},
+					initial_mode = "insert",
 					mappings = {
 						n = {
 							["qq"] = "close",

@@ -1,4 +1,3 @@
 require("00_init")
 require("01_keymaps")
--- require("plugins")
 require("lazy-setup")
