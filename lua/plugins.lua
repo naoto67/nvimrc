@@ -175,9 +175,11 @@ return {
 				mapping = cmp.mapping.preset.insert({
 					["<S-TAB>"] = cmp.mapping.select_prev_item(), --Ctrl+pで補完欄を一つ上に移動
 					["<TAB>"] = cmp.mapping.select_next_item(), --Ctrl+nで補完欄を一つ下に移動
+					["<C-k>"] = cmp.mapping.select_prev_item(), --Ctrl+pで補完欄を一つ上に移動
+					["<C-j>"] = cmp.mapping.select_next_item(), --Ctrl+pで補完欄を一つ上に移動
 					["<C-Space>"] = cmp.mapping.complete(),
 					-- ["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }), --Ctrl+yで補完を選択確定
+					["<CR>"] = cmp.mapping.confirm({ select = false }), --Ctrl+yで補完を選択確定
 				}),
 				experimental = {
 					ghost_text = true,
@@ -292,6 +294,8 @@ return {
 					typescriptreact = { "eslint_d", "prettierd" },
 					go = { "gofmt", "goimports" },
 					graphql = { "prettierd" },
+					cue = { "cue_fmt" },
+					proto = { "buf" },
 				},
 			})
 		end,
@@ -332,10 +336,10 @@ return {
 				},
 			})
 			local opts = { noremap = true, silent = true, expr = true }
-			vim.keymap.set("n", "<leader>trr", function()
+			vim.keymap.set("n", "<S-t>", function()
 				return pantran.motion_translate() .. "_"
 			end, opts)
-			vim.keymap.set("x", "<leader>trr", pantran.motion_translate, opts)
+			vim.keymap.set("x", "<S-t>", pantran.motion_translate, opts)
 		end,
 	},
 
@@ -546,5 +550,54 @@ return {
 			vim.keymap.set("n", "<S-f>", "<cmd>Telescope live_grep<CR>", {})
 			vim.keymap.set("n", "<C-c>", "<cmd>Telescope cmdline<CR>", {})
 		end,
+	},
+	{
+		"mfussenegger/nvim-lint",
+		event = "VeryLazy",
+		config = function()
+			local lint = require("lint")
+			vim.api.nvim_create_autocmd({
+				"BufWritePost",
+				"BufReadPost",
+				-- "InsertLeave",
+				-- "TextChanged"
+			}, {
+				group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
+				callback = function()
+					local names = lint.linters_by_ft[vim.bo.filetype] or {}
+
+					local ctx = { filename = vim.api.nvim_buf_get_name(0) }
+					ctx.dirname = vim.fn.fnamemodify(ctx.filename, ":h")
+					names = vim.tbl_filter(function(name)
+						local linter = lint.linters[name]
+						return linter
+							and not (type(linter) == "table" and linter.condition and not linter.condition(ctx))
+					end, names)
+
+					if #names > 0 then
+						lint.try_lint(names)
+					end
+				end,
+			})
+			lint.linters_by_ft = {
+				javascript = { "eslint_d", "typos" },
+				typescript = { "eslint_d", "typos" },
+				javascriptreact = { "eslint_d", "typos" },
+				typescriptreact = { "eslint_d", "typos" },
+				css = { "typos" },
+				sh = { "typos" },
+				lua = { "typos" },
+				json = { "jsonlint", "typos" },
+				yaml = { "typos" },
+				terraform = { "typos" },
+				go = { "typos" },
+			}
+		end,
+	},
+
+	{
+		"sindrets/diffview.nvim",
+		event = "VeryLazy",
+		-- config = function()
 	},
 }
