@@ -1,0 +1,7 @@
+{
+  "clock with time": {
+    "prefix": "ctw",
+    "body": "ctx := clock.WithTime(context.Background(), time.Now())",
+    "description": "Snippet for clock withtime"
+  }
+}

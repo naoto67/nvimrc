@@ -138,7 +138,13 @@ return {
 				"L3MON4D3/LuaSnip",
 				build = "make install_jsregexp",
 				dependencies = "rafamadriz/friendly-snippets",
-				config = function() end,
+				config = function()
+					local luasnip = require("luasnip")
+					luasnip.filetype_extend("go", { "go" })
+					local vscode = require("luasnip.loaders.from_vscode")
+					vscode.lazy_load()
+					vscode.lazy_load({ paths = { "~/.config/nvim/snippets" } })
+				end,
 			},
 		},
 		event = { "InsertEnter", "LspAttach" },
@@ -171,6 +177,8 @@ return {
 					-- { name = "buffer" },
 					-- { name = 'copilot',  group_index = 2 },
 					{ name = "path" },
+					{ name = "luasnip" },
+					{ name = "buffer" },
 				},
 				mapping = cmp.mapping.preset.insert({
 					["<S-TAB>"] = cmp.mapping.select_prev_item(), --Ctrl+pで補完欄を一つ上に移動
@@ -233,6 +241,7 @@ return {
 					"javascript",
 					"typescript",
 					"terraform",
+					"cue",
 				},
 				sync_install = false,
 				auto_install = false,
@@ -288,10 +297,10 @@ return {
 					html = { "prettierd" },
 					css = { "prettierd" },
 					xml = { "xmlformat" },
-					javascript = { "eslint_d", "prettierd" },
-					javascriptreact = { "eslint_d", "prettierd" },
-					typescript = { "eslint_d", "prettierd" },
-					typescriptreact = { "eslint_d", "prettierd" },
+					javascript = { "prettierd" },
+					javascriptreact = { "prettierd" },
+					typescript = { "prettierd" },
+					typescriptreact = { "prettierd" },
 					go = { "gofmt", "goimports" },
 					graphql = { "prettierd" },
 					cue = { "cue_fmt" },
@@ -358,7 +367,7 @@ return {
 				lsp_on_attach = false,
 				lsp_gofumpt = false,
 				test_runner = "go",
-				run_in_floaterm = true,
+				-- run_in_floaterm = true,
 				gotests_template_dir = "/Users/s11641/Project/journey/server/templates/mockunit",
 			})
 		end,

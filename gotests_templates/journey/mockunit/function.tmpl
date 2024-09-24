@@ -1,0 +1,92 @@
+{{define "equal"}}assert.Equal{{if or (not .Subtests) .PrintInputs}}f{{end}}{{end}}
+
+{{define "msg"}}{{if or (not .Subtests) .PrintInputs}} , "{{template "message" .}}", {{template "inputs" .}}{{end}}{{end}}
+
+{{define "function"}}
+{{- $f := .}}
+
+func {{.TestName}}(t *testing.T) {
+	t.Parallel()
+	type fields struct {
+	{{- with .Receiver}}
+		{{- if .IsStruct}}
+			{{- if .Fields}}
+				{{- range .Fields}}
+					{{Field .}} {{.Type}}
+				{{- end}}
+			{{- end}} {{- end}}
+	{{- end}}
+	}
+	{{- if .TestParameters}}
+	type args struct {
+		{{- range .TestParameters}}
+			{{Param .}} {{.Type}}
+		{{- end}}
+	}
+	{{- end}}
+	type returns struct {
+		{{- range .TestResults}}
+			{{Want .}} {{.Type}}
+		{{- end}}
+		{{- if .ReturnsError}}
+			err error
+		{{- end}}
+	}
+	type testContext struct {
+		prepare func(f fields)
+		args    args
+		returns returns
+	}
+	tests := []struct {
+		name        string
+		testContext func() *testContext
+	}{
+		{
+			name: "正常",
+			testContext: func() *testContext {
+				arg := args{
+				}
+				return &testContext{
+					prepare: func(f fields) {
+					},
+					args:    arg,
+					returns: returns{},
+				}
+			},
+		},
+	}
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+			helpertest.RunWithMock(t, func(ctrl *gomock.Controller) {
+				tc := tt.testContext()
+				f := fields{}
+				if tc.prepare != nil {
+					tc.prepare(f)
+				}
+        {{- with .Receiver}}{{if and .IsStruct}}
+					{{Receiver .}} := {{if .Type.IsStar}}&{{end}}{{.Type.Value}}{
+						{{- range .Fields}}
+							{{.Name}}: f.{{Field .}},
+						{{- end}}
+					}
+				{{- end}}{{end}}
+				{{- if and (not .OnlyReturnsError) (not .OnlyReturnsOneValue) }}
+					{{template "results" $f}} {{template "call" $f}}
+				{{- end}}
+				{{- if .ReturnsError}}
+					helpertest.EqualException(t, tc.returns.err, err)
+				{{- end}}
+				{{- range .TestResults}}
+					{{- if $f.OnlyReturnsOneValue}}
+						{{template "equal" $f}}(t, tc.returns.{{Want .}}, {{template "inline" $f}}{{template "msg" $f}})
+					{{- else}}
+						{{template "equal" $f}}(t, tc.returns.{{Want .}}, {{Got .}}{{template "msg" $f}})
+					{{- end}}
+				{{- end}}
+			})
+		})
+	}
+}
+{{end}}

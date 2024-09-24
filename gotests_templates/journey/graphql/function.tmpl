@@ -1,0 +1,55 @@
+{{define "equal"}}assert.Equal{{if or (not .Subtests) .PrintInputs}}f{{end}}{{end}}
+
+{{define "msg"}}{{if or (not .Subtests) .PrintInputs}} , "{{template "message" .}}", {{template "inputs" .}}{{end}}{{end}}
+
+{{define "function"}}
+{{- $f := .}}
+
+func {{.TestName}}(t *testing.T) {
+  ctx := context.Backkground()
+	idToken := testApp.FirebaseAuthTestClient.SignInFirebaseUser(ctx, t, testAccountEmail)
+	type args struct {
+		{{- range .TestParameters}}
+			{{Param .}} {{.Type}}
+		{{- end}}
+	}
+	type returns struct {
+		{{- range .TestResults}}
+			{{Want .}} {{.Type}}
+		{{- end}}
+	}
+	tests := []struct {
+		name        string
+		args    args
+		returns returns
+	}{
+		{
+			name: "正常",
+			args:    args{},
+			returns: returns{},
+		},
+	}
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+			helpertest.RunWithMock(t, func(ctrl *gomock.Controller) {
+			  cli := testApp.GenQlientGen.NewClient(idToken)
+				{{- if and (not .OnlyReturnsError) (not .OnlyReturnsOneValue) }}
+					{{template "results" $f}} {{template "call" $f}}
+				{{- end}}
+				{{- if .ReturnsError}}
+					assert.NoError(t, err)
+				{{- end}}
+				{{- range .TestResults}}
+					{{- if $f.OnlyReturnsOneValue}}
+						{{template "equal" $f}}(t, tc.returns.{{Want .}}, {{template "inline" $f}}{{template "msg" $f}})
+					{{- else}}
+						{{template "equal" $f}}(t, tc.returns.{{Want .}}, {{Got .}}{{template "msg" $f}})
+					{{- end}}
+				{{- end}}
+			})
+		})
+	}
+}
+{{end}}

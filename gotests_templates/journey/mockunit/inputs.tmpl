@@ -1,0 +1,1 @@
+{{define "inputs"}}{{$f := .}}{{if not .Subtests}}{{if not .Named}}tc.{{end}}name, {{end}}{{if $f.PrintInputs}}{{range $f.Parameters}}tc.args.{{Param .}}, {{end}}{{end}}{{end}}
