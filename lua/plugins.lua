@@ -45,7 +45,7 @@ return {
 			require("mason-tool-installer").setup({
 				ensure_installed = {
 					"gopls",
-					"buf-language-server",
+					-- "buf-language-server",
 					"lua-language-server",
 					"graphql-language-service-cli",
 					"terraform-ls",
@@ -104,6 +104,19 @@ return {
 				filetypes = { "go", "gomod" },
 				init_options = {
 					command = { "golangci-lint", "run", "--out-format", "json" },
+				},
+			})
+			lspconfig.yamlls.setup({
+				settings = {
+					yaml = {
+						schemas = {
+							["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+							["https://taskfile.dev/schema.json"] = {
+								"/Taskfile.yml",
+								"**/Taskfile.yml",
+							},
+						},
+					},
 				},
 			})
 		end,
@@ -178,7 +191,7 @@ return {
 					-- { name = 'copilot',  group_index = 2 },
 					{ name = "path" },
 					{ name = "luasnip" },
-					{ name = "buffer" },
+					-- { name = "buffer" },
 				},
 				mapping = cmp.mapping.preset.insert({
 					["<S-TAB>"] = cmp.mapping.select_prev_item(), --Ctrl+pで補完欄を一つ上に移動
@@ -240,6 +253,7 @@ return {
 					"css",
 					"javascript",
 					"typescript",
+					"tsx",
 					"terraform",
 					"cue",
 				},
@@ -368,7 +382,6 @@ return {
 				lsp_gofumpt = false,
 				test_runner = "go",
 				-- run_in_floaterm = true,
-				gotests_template_dir = "/Users/s11641/Project/journey/server/templates/mockunit",
 			})
 		end,
 	},
@@ -407,7 +420,7 @@ return {
 		{
 			"tanvirtin/monokai.nvim",
 			config = function()
-				require("monokai").setup({ palette = require("monokai").soda })
+				require("monokai").setup({ palette = require("monokai") })
 			end,
 		},
 	},
@@ -608,5 +621,28 @@ return {
 		"sindrets/diffview.nvim",
 		event = "VeryLazy",
 		-- config = function()
+	},
+
+	{
+		"ruifm/gitlinker.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("gitlinker").setup()
+		end,
+	},
+
+	{
+		"pwntester/octo.nvim",
+		event = "VeryLazy",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+			-- OR 'ibhagwan/fzf-lua',
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("octo").setup()
+		end,
 	},
 }

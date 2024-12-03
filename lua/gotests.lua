@@ -64,6 +64,7 @@ local template_dir_complete = function(arg_lead, _, _)
 		vim.fn.expand("$HOME/.config/nvim/gotests_templates/journey/mockunit"),
 		vim.fn.expand("$HOME/.config/nvim/gotests_templates/journey/adminrepo"),
 		vim.fn.expand("$HOME/.config/nvim/gotests_templates/journey/graphql"),
+		vim.fn.expand("$HOME/.config/nvim/gotests_templates/journey/testify"),
 	})
 end
 

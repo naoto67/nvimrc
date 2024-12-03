@@ -1,7 +1,6 @@
 local keymap_opts = { noremap = true, silent = false }
 
--- キーバインドの変換
-vim.api.nvim_set_keymap("n", "<C-h>", "<S-Left>", keymap_opts)
+-- キーバインドの変換 vim.api.nvim_set_keymap("n", "<C-h>", "<S-Left>", keymap_opts)
 vim.api.nvim_set_keymap("n", "<C-l>", "<S-Right>", keymap_opts)
 vim.api.nvim_set_keymap("n", "<S-h>", "<S-Left>", keymap_opts)
 vim.api.nvim_set_keymap("n", "<S-l>", "<S-Right>", keymap_opts)
@@ -40,3 +39,18 @@ vim.keymap.set("n", "<leader>gg", "<cmd>:GoGenerate<cr>", keymap_opts)
 vim.keymap.set("n", "<leader>gl", "<cmd>:LazyGit<cr>", keymap_opts)
 
 vim.api.nvim_set_keymap("i", "<C-t>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+
+vim.api.nvim_set_keymap("n", "<leader>gb", '<cmd>lua require"gitlinker".get_buf_range_url("n")<cr>', { silent = true })
+vim.api.nvim_set_keymap("v", "<leader>gb", '<cmd>lua require"gitlinker".get_buf_range_url("v")<cr>', { silent = true })
+-- vim.api.nvim_set_keymap(
+-- 	"n",
+-- 	"<leader>gb",
+-- 	'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
+-- 	{ silent = true }
+-- )
+-- vim.api.nvim_set_keymap(
+-- 	"v",
+-- 	"<leader>gb",
+-- 	'<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
+-- 	{ silent = true }
+-- )
