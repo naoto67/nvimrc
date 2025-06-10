@@ -33,91 +33,16 @@ return {
 
 			local lspconfig = require("lspconfig")
 			require("mason").setup()
-			require("mason-lspconfig").setup()
-			require("mason-lspconfig").setup_handlers({
-				function(server_name) -- default handler (optional)
-					require("lspconfig")[server_name].setup({
-						on_attach = on_attach, --keyバインドなどの設定を登録
-						capabilities = capabilities, --cmpを連携
-					})
-				end,
-			})
-			require("mason-tool-installer").setup({
+			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"gopls",
-					-- "buf-language-server",
-					"lua-language-server",
-					"graphql-language-service-cli",
-					"terraform-ls",
-
-					"goimports",
-					"golangci-lint",
-					"golangci-lint-langserver",
-					"prettierd",
-					"prettier",
-					"actionlint",
-					"stylua",
-					"tflint",
+					"lua_ls",
+					"yamlls",
+					"graphql",
+					"terraformls",
+					-- "buf_language_server",
 				},
-				auto_update = true,
-				run_on_start = true,
-				start_delay = 3000,
-				debounce_hours = 5,
-			})
-			lspconfig.gopls.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				settings = {
-					gopls = {
-						analyses = {
-							unusedparams = true,
-							shadow = true,
-						},
-						staticcheck = true,
-						gofumpt = true,
-						completeUnimported = true,
-						completionDocumentation = true,
-						deepCompletion = true,
-					},
-				},
-			})
-			lspconfig.lua_ls.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				settings = {
-					Lua = {
-						diagnostics = {
-							globals = { "vim" },
-						},
-						-- inlay hints
-						hint = { enable = true },
-					},
-				},
-			})
-			lspconfig.graphql.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
-			lspconfig.golangci_lint_ls.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				filetypes = { "go", "gomod" },
-				init_options = {
-					command = { "golangci-lint", "run", "--out-format", "json" },
-				},
-			})
-			lspconfig.yamlls.setup({
-				settings = {
-					yaml = {
-						schemas = {
-							["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-							["https://taskfile.dev/schema.json"] = {
-								"/Taskfile.yml",
-								"**/Taskfile.yml",
-							},
-						},
-					},
-				},
+				automatic_installation = true,
 			})
 		end,
 	},
@@ -282,7 +207,7 @@ return {
 		event = "VeryLazy",
 		init = function(plugin)
 			require("lazy.core.loader").add_to_rtp(plugin)
-			pcall(require, "nvim-treesitter.query_predicates")
+			-- pcall(require, "nvim-treesitter.query_predicates")
 		end,
 		config = function()
 			require("nvim-treesitter.configs").setup({
@@ -690,6 +615,17 @@ return {
 		},
 		config = function()
 			require("octo").setup()
+		end,
+	},
+
+	{
+		"greggh/claude-code.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- Required for git operations
+		},
+		config = function()
+			require("claude-code").setup()
+			vim.keymap.set("n", "<leader>cc", "<cmd>ClaudeCode<CR>", { desc = "Toggle Claude Code" })
 		end,
 	},
 }
