@@ -18,17 +18,17 @@ return {
 				vim.lsp.inlay_hint.enable(true)
 
 				local bufopts = { noremap = true, silent = true, buffer = bufnr }
-				vim.keymap.set("n", "vgd", "<cmd>:vsplit <CR> <cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
-				vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
-				vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", bufopts)
-				vim.keymap.set("n", "<C-m>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", bufopts)
-				vim.keymap.set("n", "gy", "<cmd>lua vim.lsp.buf.type_definition()<CR>", bufopts)
-				vim.keymap.set("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", bufopts)
-				vim.keymap.set("n", "ma", "<cmd>lua vim.lsp.buf.code_action()<CR>", bufopts)
-				vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", bufopts)
-				vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", bufopts)
-				vim.keymap.set("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", bufopts)
-				vim.keymap.set("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", bufopts)
+				vim.keymap.set("n", "vgd", "<cmd>:vsplit<CR><cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
+				vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, bufopts)
+				vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, bufopts)
+				vim.keymap.set("n", "<C-m>", function() vim.lsp.buf.signature_help() end, bufopts)
+				vim.keymap.set("n", "gy", function() vim.lsp.buf.type_definition() end, bufopts)
+				vim.keymap.set("n", "rn", function() vim.lsp.buf.rename() end, bufopts)
+				vim.keymap.set("n", "ma", function() vim.lsp.buf.code_action() end, bufopts)
+				vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, bufopts)
+				vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, bufopts)
+				vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, bufopts)
+				vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, bufopts)
 			end
 
 			local lspconfig = require("lspconfig")
@@ -86,6 +86,16 @@ return {
 			},
 		},
 		event = { "InsertEnter", "LspAttach" },
+		keys = {
+			{
+				"<C-Space>",
+				function()
+					require("cmp").complete()
+				end,
+				mode = "i",
+				desc = "Trigger completion"
+			},
+		},
 		config = function()
 			vim.opt.completeopt = { "menu", "menuone", "noselect" }
 			vim.opt.completefunc = 'v:lua.require("cmp").complete()'
@@ -123,7 +133,6 @@ return {
 					["<TAB>"] = cmp.mapping.select_next_item(), --Ctrl+nで補完欄を一つ下に移動
 					["<C-k>"] = cmp.mapping.select_prev_item(), --Ctrl+pで補完欄を一つ上に移動
 					["<C-j>"] = cmp.mapping.select_next_item(), --Ctrl+pで補完欄を一つ上に移動
-					["<C-Space>"] = cmp.mapping.complete(),
 					-- ["<C-e>"] = cmp.mapping.abort(),
 					["<CR>"] = cmp.mapping.confirm({ select = false }), --Ctrl+yで補完を選択確定
 				}),
