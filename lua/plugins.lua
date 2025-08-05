@@ -153,7 +153,6 @@ return {
 		end,
 	},
 
-
 	-- code highlight
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -312,25 +311,6 @@ return {
 		end,
 	},
 
-	-- git
-	{
-		"kdheepak/lazygit.nvim",
-		cmd = {
-			"LazyGit",
-			"LazyGitConfig",
-			"LazyGitCurrentFile",
-			"LazyGitFilter",
-			"LazyGitFilterCurrentFile",
-		},
-		-- optional for floating window border decoration
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-		keys = {
-			{ "<leader>gl", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-		},
-	},
-
 	-- colorschema
 	{
 		-- {
@@ -345,8 +325,13 @@ return {
 		-- },
 		{
 			"tanvirtin/monokai.nvim",
+			lazy = false,
+			priority = 1000,
 			config = function()
-				require("monokai").setup({ palette = require("monokai") })
+				require("monokai").setup({
+					palette = require("monokai"),
+				})
+				vim.cmd.colorscheme("monokai")
 			end,
 		},
 	},
@@ -429,76 +414,6 @@ return {
 		end,
 	},
 
-	-- file search
-	{
-		"nvim-telescope/telescope.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"stevearc/dressing.nvim",
-			-- /Users/s11641/.local/share/nvim/lazy/telescope-fzf-native.nvim
-			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-			"nvim-telescope/telescope-ui-select.nvim",
-			"jonarrien/telescope-cmdline.nvim",
-			"nvim-telescope/telescope-ui-select.nvim",
-		},
-		event = "VeryLazy",
-		config = function()
-			local telescope = require("telescope")
-			telescope.setup({
-				pickers = {
-					find_files = {
-						find_command = {
-							"rg",
-							"--color=never",
-							"--no-heading",
-							"--with-filename",
-							"--line-number",
-							"--column",
-							"--smart-case",
-							"--trim",
-							-- "--no-ignore",
-							"--hidden",
-							"--files",
-							"--sortr=modified",
-						},
-					},
-				},
-				defaults = {
-					file_ignore_patterns = {
-						"^.git/HEAD",
-						"^.git/[^c][^o][^n][^f][^i][^g]",
-						"^.git/[^h][^o][^o][^k][^s]",
-					},
-					initial_mode = "insert",
-					mappings = {
-						n = {
-							["qq"] = "close",
-						},
-						i = {
-							["jj"] = "close",
-							["<C-k>"] = "move_selection_previous",
-							["<C-j>"] = "move_selection_next",
-						},
-					},
-				},
-				extensions = {
-					fzf = {
-						fuzzy = true, -- false will only do exact matching
-						override_generic_sorter = true, -- override the generic sorter
-						override_file_sorter = true, -- override the file sorter
-						case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-					},
-				},
-			})
-			require("telescope").load_extension("fzf")
-			require("telescope").load_extension("cmdline")
-			require("telescope").load_extension("ui-select")
-
-			vim.keymap.set("n", "<C-f>", "<cmd>Telescope find_files<CR>", {})
-			vim.keymap.set("n", "<S-f>", "<cmd>Telescope live_grep<CR>", {})
-			vim.keymap.set("n", "<C-c>", "<cmd>Telescope cmdline<CR>", {})
-		end,
-	},
 	{
 		"mfussenegger/nvim-lint",
 		event = "VeryLazy",
@@ -555,20 +470,6 @@ return {
 		event = "VeryLazy",
 		config = function()
 			require("gitlinker").setup()
-		end,
-	},
-
-	{
-		"pwntester/octo.nvim",
-		event = "VeryLazy",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-			-- OR 'ibhagwan/fzf-lua',
-			"nvim-tree/nvim-web-devicons",
-		},
-		config = function()
-			require("octo").setup()
 		end,
 	},
 
