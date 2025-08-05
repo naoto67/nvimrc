@@ -19,16 +19,36 @@ return {
 
 				local bufopts = { noremap = true, silent = true, buffer = bufnr }
 				vim.keymap.set("n", "vgd", "<cmd>:vsplit<CR><cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
-				vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, bufopts)
-				vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, bufopts)
-				vim.keymap.set("n", "<C-m>", function() vim.lsp.buf.signature_help() end, bufopts)
-				vim.keymap.set("n", "gy", function() vim.lsp.buf.type_definition() end, bufopts)
-				vim.keymap.set("n", "rn", function() vim.lsp.buf.rename() end, bufopts)
-				vim.keymap.set("n", "ma", function() vim.lsp.buf.code_action() end, bufopts)
-				vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, bufopts)
-				vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, bufopts)
-				vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, bufopts)
-				vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, bufopts)
+				vim.keymap.set("n", "gd", function()
+					vim.lsp.buf.definition()
+				end, bufopts)
+				vim.keymap.set("n", "K", function()
+					vim.lsp.buf.hover()
+				end, bufopts)
+				vim.keymap.set("n", "<C-m>", function()
+					vim.lsp.buf.signature_help()
+				end, bufopts)
+				vim.keymap.set("n", "gy", function()
+					vim.lsp.buf.type_definition()
+				end, bufopts)
+				vim.keymap.set("n", "rn", function()
+					vim.lsp.buf.rename()
+				end, bufopts)
+				vim.keymap.set("n", "ma", function()
+					vim.lsp.buf.code_action()
+				end, bufopts)
+				vim.keymap.set("n", "gi", function()
+					vim.lsp.buf.implementation()
+				end, bufopts)
+				vim.keymap.set("n", "gr", function()
+					vim.lsp.buf.references()
+				end, bufopts)
+				vim.keymap.set("n", "[d", function()
+					vim.diagnostic.goto_prev()
+				end, bufopts)
+				vim.keymap.set("n", "]d", function()
+					vim.diagnostic.goto_next()
+				end, bufopts)
 			end
 
 			local lspconfig = require("lspconfig")
@@ -93,7 +113,7 @@ return {
 					require("cmp").complete()
 				end,
 				mode = "i",
-				desc = "Trigger completion"
+				desc = "Trigger completion",
 			},
 		},
 		config = function()
@@ -420,6 +440,75 @@ return {
 					virt_text_priority = 100,
 				},
 			})
+		end,
+	},
+
+	-- file search
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"stevearc/dressing.nvim",
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+			"nvim-telescope/telescope-ui-select.nvim",
+			"jonarrien/telescope-cmdline.nvim",
+		},
+		event = "VeryLazy",
+		config = function()
+			local telescope = require("telescope")
+			telescope.setup({
+				pickers = {
+					find_files = {
+						find_command = {
+							"rg",
+							"--color=never",
+							"--no-heading",
+							"--with-filename",
+							"--line-number",
+							"--column",
+							"--smart-case",
+							"--trim",
+							-- "--no-ignore",
+							"--hidden",
+							"--files",
+							"--sortr=modified",
+						},
+					},
+				},
+				defaults = {
+					file_ignore_patterns = {
+						"^.git/HEAD",
+						"^.git/[^c][^o][^n][^f][^i][^g]",
+						"^.git/[^h][^o][^o][^k][^s]",
+					},
+					initial_mode = "insert",
+					mappings = {
+						n = {
+							["qq"] = "close",
+						},
+						i = {
+							["jj"] = "close",
+							["<C-k>"] = "move_selection_previous",
+							["<C-j>"] = "move_selection_next",
+						},
+					},
+				},
+				extensions = {
+					fzf = {
+						fuzzy = true, -- false will only do exact matching
+						override_generic_sorter = true, -- override the generic sorter
+						override_file_sorter = true, -- override the file sorter
+						case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+					},
+				},
+			})
+			require("telescope").load_extension("fzf")
+			require("telescope").load_extension("cmdline")
+			require("telescope").load_extension("ui-select")
+
+			vim.keymap.set("n", "<C-f>", "<cmd>Telescope find_files<CR>", {})
+			vim.keymap.set("n", "<S-f>", "<cmd>Telescope live_grep<CR>", {})
+			vim.keymap.set("n", "<C-c>", "<cmd>Telescope cmdline<CR>", {})
 		end,
 	},
 
