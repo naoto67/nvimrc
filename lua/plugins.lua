@@ -329,9 +329,9 @@ return {
 			priority = 1000,
 			config = function()
 				require("monokai").setup({
-					palette = require("monokai"),
+					palette = require("monokai").soda,
 				})
-				vim.cmd.colorscheme("monokai")
+				vim.cmd.colorscheme("monokai_soda")
 			end,
 		},
 	},
