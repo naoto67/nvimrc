@@ -29,10 +29,27 @@ require("lazy").setup({
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
-	install = { colorscheme = { "habamax" } },
+	install = { colorscheme = { "tokyonight", "habamax" } },
 	-- automatically check for plugin updates
 	checker = { 
 		enabled = true,
 		notify = false  -- checkerログをオフにする
+	},
+	-- Plugin defaults
+	defaults = {
+		lazy = false,  -- should plugins be lazy-loaded?
+		version = false, -- avoid potential breaks from outdated releases
+	},
+	-- Performance optimizations
+	performance = {
+		rtp = {
+			disabled_plugins = {
+				"gzip",
+				"tarPlugin",
+				"tohtml",
+				"tutor",
+				"zipPlugin",
+			},
+		},
 	},
 })
