@@ -12,44 +12,44 @@ return {
 		},
 		event = "VeryLazy",
 		config = function()
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local on_attach = function(_, bufnr)
-				vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-				vim.lsp.inlay_hint.enable(true)
+			-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			-- local on_attach = function(_, bufnr)
+			-- 	vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+			-- 	vim.lsp.inlay_hint.enable(true)
 
-				local bufopts = { noremap = true, silent = true, buffer = bufnr }
-				vim.keymap.set("n", "vgd", "<cmd>:vsplit<CR><cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
-				vim.keymap.set("n", "gd", function()
-					vim.lsp.buf.definition()
-				end, bufopts)
-				vim.keymap.set("n", "K", function()
-					vim.lsp.buf.hover()
-				end, bufopts)
-				vim.keymap.set("n", "<C-m>", function()
-					vim.lsp.buf.signature_help()
-				end, bufopts)
-				vim.keymap.set("n", "gy", function()
-					vim.lsp.buf.type_definition()
-				end, bufopts)
-				vim.keymap.set("n", "rn", function()
-					vim.lsp.buf.rename()
-				end, bufopts)
-				vim.keymap.set("n", "ma", function()
-					vim.lsp.buf.code_action()
-				end, bufopts)
-				vim.keymap.set("n", "gi", function()
-					vim.lsp.buf.implementation()
-				end, bufopts)
-				vim.keymap.set("n", "gr", function()
-					vim.lsp.buf.references()
-				end, bufopts)
-				vim.keymap.set("n", "[d", function()
-					vim.diagnostic.goto_prev()
-				end, bufopts)
-				vim.keymap.set("n", "]d", function()
-					vim.diagnostic.goto_next()
-				end, bufopts)
-			end
+			-- 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+			-- 	vim.keymap.set("n", "vgd", "<cmd>:vsplit<CR><cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
+			-- 	vim.keymap.set("n", "gd", function()
+			-- 		vim.lsp.buf.definition()
+			-- 	end, bufopts)
+			-- 	vim.keymap.set("n", "K", function()
+			-- 		vim.lsp.buf.hover()
+			-- 	end, bufopts)
+			-- 	vim.keymap.set("n", "<C-m>", function()
+			-- 		vim.lsp.buf.signature_help()
+			-- 	end, bufopts)
+			-- 	vim.keymap.set("n", "gy", function()
+			-- 		vim.lsp.buf.type_definition()
+			-- 	end, bufopts)
+			-- 	vim.keymap.set("n", "rn", function()
+			-- 		vim.lsp.buf.rename()
+			-- 	end, bufopts)
+			-- 	vim.keymap.set("n", "ma", function()
+			-- 		vim.lsp.buf.code_action()
+			-- 	end, bufopts)
+			-- 	vim.keymap.set("n", "gi", function()
+			-- 		vim.lsp.buf.implementation()
+			-- 	end, bufopts)
+			-- 	vim.keymap.set("n", "gr", function()
+			-- 		vim.lsp.buf.references()
+			-- 	end, bufopts)
+			-- 	vim.keymap.set("n", "[d", function()
+			-- 		vim.diagnostic.goto_prev()
+			-- 	end, bufopts)
+			-- 	vim.keymap.set("n", "]d", function()
+			-- 		vim.diagnostic.goto_next()
+			-- 	end, bufopts)
+			-- end
 
 			local lspconfig = require("lspconfig")
 			require("mason").setup()
@@ -60,6 +60,7 @@ return {
 					"yamlls",
 					"graphql",
 					"terraformls",
+					"golangci_lint_ls",
 					-- "buf_language_server",
 				},
 				automatic_installation = true,
@@ -321,24 +322,24 @@ return {
 	},
 
 	-- Golang
-	{
-		"ray-x/go.nvim",
-		dependencies = {
-			"ray-x/guihua.lua",
-			"neovim/nvim-lspconfig",
-			"nvim-treesitter/nvim-treesitter",
-		},
-		ft = { "go", "gomod" },
-		config = function()
-			require("go").setup({
-				lsp_cfg = false,
-				lsp_on_attach = false,
-				lsp_gofumpt = false,
-				test_runner = "go",
-				-- run_in_floaterm = true,
-			})
-		end,
-	},
+	-- {
+	-- 	"ray-x/go.nvim",
+	-- 	dependencies = {
+	-- 		"ray-x/guihua.lua",
+	-- 		"neovim/nvim-lspconfig",
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 	},
+	-- 	ft = { "go", "gomod" },
+	-- 	config = function()
+	-- 		require("go").setup({
+	-- 			lsp_cfg = false,
+	-- 			lsp_on_attach = false,
+	-- 			lsp_gofumpt = false,
+	-- 			test_runner = "go",
+	-- 			-- run_in_floaterm = true,
+	-- 		})
+	-- 	end,
+	-- },
 
 	-- colorschema
 	{
