@@ -30,11 +30,11 @@ vim.api.nvim_set_keymap("n", "<C-E>", ":NvimTreeToggle<CR>", keymap_opts)
 vim.api.nvim_set_keymap("n", "<C-e>", ":NvimTreeFindFileToggle<CR>", keymap_opts)
 vim.api.nvim_set_keymap("n", "<C-r>", ":NvimTreeRefres<CR>", keymap_opts)
 
-vim.keymap.set("n", "<leader>tt", "<cmd>:GoTest -p -a -test.count=1<cr>", keymap_opts)
-vim.keymap.set("n", "<leader>tr", "<cmd>:GoTest -n -a -test.count=1<cr>", keymap_opts)
-vim.keymap.set("n", "<leader>tf", "<cmd>:GoTest -f -a -test.count=1<cr>", keymap_opts)
-vim.keymap.set("n", "<leader>tc", "<cmd>:GoTermClose<cr>", keymap_opts)
-vim.keymap.set("n", "<leader>gg", "<cmd>:GoGenerate<cr>", keymap_opts)
+-- vim.keymap.set("n", "<leader>tt", "<cmd>:GoTest -p -a -test.count=1<cr>", keymap_opts)
+-- vim.keymap.set("n", "<leader>tr", "<cmd>:GoTest -n -a -test.count=1<cr>", keymap_opts)
+-- vim.keymap.set("n", "<leader>tf", "<cmd>:GoTest -f -a -test.count=1<cr>", keymap_opts)
+-- vim.keymap.set("n", "<leader>tc", "<cmd>:GoTermClose<cr>", keymap_opts)
+-- vim.keymap.set("n", "<leader>gg", "<cmd>:GoGenerate<cr>", keymap_opts)
 
 vim.keymap.set("n", "<leader>gl", "<cmd>:LazyGit<cr>", keymap_opts)
 

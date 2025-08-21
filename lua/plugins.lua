@@ -187,8 +187,8 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		-- event = "VeryLazy",
-		lazy = false,
+		event = "VeryLazy",
+		-- lazy = false,
 		init = function(plugin)
 			require("lazy.core.loader").add_to_rtp(plugin)
 			-- pcall(require, "nvim-treesitter.query_predicates")
@@ -322,28 +322,97 @@ return {
 		end,
 	},
 
-	-- Golang
+	-- Test runner
 	{
-		"ray-x/go.nvim",
+		"nvim-neotest/neotest",
 		dependencies = {
-			"ray-x/guihua.lua",
-			"neovim/nvim-lspconfig",
+			"nvim-neotest/nvim-nio",
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
+			"fredrikaverpil/neotest-golang",
 		},
-		ft = { "go", "gomod" },
+		keys = {
+			{
+				"<leader>tr",
+				function()
+					require("neotest").run.run()
+				end,
+				desc = "Run nearest test",
+			},
+			{
+				"<leader>tf",
+				function()
+					require("neotest").run.run(vim.fn.expand("%"))
+				end,
+				desc = "Run current file tests",
+			},
+			{
+				"<leader>td",
+				function()
+					require("neotest").run.run({ strategy = "dap" })
+				end,
+				desc = "Debug nearest test",
+			},
+			{
+				"<leader>ts",
+				function()
+					require("neotest").summary.toggle()
+				end,
+				desc = "Toggle test summary",
+			},
+			{
+				"<leader>to",
+				function()
+					require("neotest").output.open({ enter = true, auto_close = true })
+				end,
+				desc = "Show test output",
+			},
+		},
 		config = function()
-			require("go").setup({
-				lsp_cfg = false,
-				lsp_on_attach = false,
-				lsp_gofumpt = false,
-				test_runner = "go",
-				golangci_lint = {
-					default = "none", -- set to one of { 'standard', 'fast', 'all', 'none' }
+			local neotest_ns = vim.api.nvim_create_namespace("neotest")
+			vim.diagnostic.config({
+				virtual_text = {
+					format = function(diagnostic)
+						return diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+					end,
 				},
-				-- run_in_floaterm = true,
+			}, neotest_ns)
+
+			require("neotest").setup({
+				adapters = {
+					require("neotest-golang")({
+						go_test_args = { "-v", "-race", "-count=1", "-timeout=60s" },
+						dap_go_enabled = false, -- DAP設定は今回は無効
+					}),
+				},
 			})
 		end,
 	},
+
+	-- Golang
+	-- {
+	-- 	"ray-x/go.nvim",
+	-- 	dependencies = {
+	-- 		"ray-x/guihua.lua",
+	-- 		"neovim/nvim-lspconfig",
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 	},
+	-- 	ft = { "go", "gomod" },
+	-- 	config = function()
+	-- 		require("go").setup({
+	-- 			lsp_cfg = false,
+	-- 			lsp_on_attach = false,
+	-- 			lsp_gofumpt = false,
+	-- 			test_runner = "go",
+	-- 			golangci_lint = {
+	-- 				default = "none", -- set to one of { 'standard', 'fast', 'all', 'none' }
+	-- 			},
+	-- 			-- テスト関連機能を無効化（neotestに移行）
+	-- 			run_in_floaterm = false,
+	-- 		})
+	-- 	end,
+	-- },
 
 	-- colorschema
 	{
