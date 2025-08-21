@@ -26,17 +26,13 @@ vim.lsp.config("gopls", {
 		},
 	},
 })
--- vim.lsp.config("golangci_lint_ls", {
--- 	settings = {
--- 		golangci_lint_ls = {
--- 			cmd = { "golangci-lint", "run", "--out-format", "json" },
--- 			filetypes = { "go" },
--- 			root_dir = vim.loop.cwd,
--- 			lint_command = "golangci-lint run --out-format json",
--- 			lint_source = "golangci-lint",
--- 		},
--- 	},
--- })
+vim.lsp.config("golangci_lint_ls", {
+	settings = {
+		golangci_lint_ls = {
+			cmd = { "go", "tool", "golangci-lint", "run" },
+		},
+	},
+})
 vim.lsp.enable({ "gopls", "graphql", "lua_ls", "yamlls" })
 
 vim.api.nvim_create_autocmd("LspAttach", {

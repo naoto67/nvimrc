@@ -187,7 +187,8 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		event = "VeryLazy",
+		-- event = "VeryLazy",
+		lazy = false,
 		init = function(plugin)
 			require("lazy.core.loader").add_to_rtp(plugin)
 			-- pcall(require, "nvim-treesitter.query_predicates")
@@ -322,24 +323,27 @@ return {
 	},
 
 	-- Golang
-	-- {
-	-- 	"ray-x/go.nvim",
-	-- 	dependencies = {
-	-- 		"ray-x/guihua.lua",
-	-- 		"neovim/nvim-lspconfig",
-	-- 		"nvim-treesitter/nvim-treesitter",
-	-- 	},
-	-- 	ft = { "go", "gomod" },
-	-- 	config = function()
-	-- 		require("go").setup({
-	-- 			lsp_cfg = false,
-	-- 			lsp_on_attach = false,
-	-- 			lsp_gofumpt = false,
-	-- 			test_runner = "go",
-	-- 			-- run_in_floaterm = true,
-	-- 		})
-	-- 	end,
-	-- },
+	{
+		"ray-x/go.nvim",
+		dependencies = {
+			"ray-x/guihua.lua",
+			"neovim/nvim-lspconfig",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		ft = { "go", "gomod" },
+		config = function()
+			require("go").setup({
+				lsp_cfg = false,
+				lsp_on_attach = false,
+				lsp_gofumpt = false,
+				test_runner = "go",
+				golangci_lint = {
+					default = "none", -- set to one of { 'standard', 'fast', 'all', 'none' }
+				},
+				-- run_in_floaterm = true,
+			})
+		end,
+	},
 
 	-- colorschema
 	{
