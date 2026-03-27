@@ -1,5 +1,5 @@
 require("00_init")
 require("01_keymaps")
 require("lazy-setup")
-require("gotests")
+-- require("gotests")
 require("lsp")
