@@ -653,4 +653,13 @@ return {
 		end,
 		ft = { "markdown" },
 	},
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+		ft = { "markdown" },
+		opts = {},
+		keys = {
+			{ "<leader>mt", "<cmd>RenderMarkdown toggle<CR>", desc = "Toggle markdown rendering" },
+		},
+	},
 }
