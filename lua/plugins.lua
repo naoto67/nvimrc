@@ -579,10 +579,24 @@ return {
 			require("telescope").load_extension("fzf")
 			require("telescope").load_extension("cmdline")
 			require("telescope").load_extension("ui-select")
+			require("telescope").load_extension("git_worktree")
 
 			vim.keymap.set("n", "<C-f>", "<cmd>Telescope find_files<CR>", {})
 			vim.keymap.set("n", "<S-f>", "<cmd>Telescope live_grep<CR>", {})
 			vim.keymap.set("n", "<C-c>", "<cmd>Telescope cmdline<CR>", {})
+		end,
+	},
+
+	-- git worktree
+	{
+		"ThePrimeagen/git-worktree.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+		config = function()
+			require("git-worktree").setup()
 		end,
 	},
 

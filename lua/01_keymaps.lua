@@ -42,6 +42,14 @@ vim.api.nvim_set_keymap("i", "<C-t>", 'copilot#Accept("<CR>")', { silent = true,
 
 vim.api.nvim_set_keymap("n", "<leader>gb", '<cmd>lua require"gitlinker".get_buf_range_url("n")<cr>', { silent = true })
 vim.api.nvim_set_keymap("v", "<leader>gb", '<cmd>lua require"gitlinker".get_buf_range_url("v")<cr>', { silent = true })
+
+-- git-worktree
+vim.keymap.set("n", "<leader>gwl", function()
+	require("telescope").extensions.git_worktree.git_worktrees()
+end, { desc = "Git worktrees list" })
+vim.keymap.set("n", "<leader>gwc", function()
+	require("telescope").extensions.git_worktree.create_git_worktree()
+end, { desc = "Create git worktree" })
 -- vim.api.nvim_set_keymap(
 -- 	"n",
 -- 	"<leader>gb",
