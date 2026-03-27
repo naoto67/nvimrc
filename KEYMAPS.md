@@ -113,6 +113,7 @@
 | キー | 動作 |
 |------|------|
 | `<leader>gl` | LazyGit を開く |
+| `<leader>lg` | LazyGit をフロートで開く (toggleterm) |
 | `<leader>gb` | Git リンクをコピー (Normal / Visual) |
 | `<leader>gs` | Git blame (現在行) |
 | `<leader>gwl` | Git worktree 一覧 |
@@ -129,6 +130,25 @@
 | `<leader>td` | カーソル近傍のテストを DAP でデバッグ |
 | `<leader>ts` | テストサマリーパネルをトグル |
 | `<leader>to` | テスト出力を表示 |
+
+---
+
+## ターミナル (toggleterm)
+
+| キー | 動作 | モード |
+|------|------|--------|
+| `<C-\>` | フロートターミナルをトグル | Normal / Insert / Terminal |
+| `<leader>tt` | フロートターミナルをトグル | Normal |
+| `<leader>th` | 水平ターミナルをトグル | Normal |
+| `<leader>tv` | 垂直ターミナルをトグル | Normal |
+
+### ターミナル内のキー
+
+| キー | 動作 |
+|------|------|
+| `<Esc><Esc>` | ノーマルモードへ戻る |
+| `<C-h>` | 左のウィンドウへ移動 |
+| `<C-l>` | 右のウィンドウへ移動 |
 
 ---
 
