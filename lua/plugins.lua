@@ -676,4 +676,80 @@ return {
 			{ "<leader>mt", "<cmd>RenderMarkdown toggle<CR>", desc = "Toggle markdown rendering" },
 		},
 	},
+
+	-- terminal
+	{
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		event = "VeryLazy",
+		keys = {
+			{ "<C-\\>", desc = "Toggle terminal" },
+			{ "<leader>lg", desc = "Open lazygit" },
+			{ "<leader>tt", desc = "Toggle terminal (float)" },
+			{ "<leader>th", desc = "Toggle terminal (horizontal)" },
+			{ "<leader>tv", desc = "Toggle terminal (vertical)" },
+		},
+		config = function()
+			require("toggleterm").setup({
+				size = function(term)
+					if term.direction == "horizontal" then
+						return 15
+					elseif term.direction == "vertical" then
+						return vim.o.columns * 0.4
+					end
+				end,
+				direction = "float",
+				open_mapping = [[<C-\>]],
+				float_opts = {
+					border = "curved",
+					winblend = 3,
+				},
+				shell = vim.o.shell,
+				persist_mode = true,
+				start_in_insert = true,
+				close_on_exit = true,
+			})
+
+			-- lazygit 専用ターミナル
+			local Terminal = require("toggleterm.terminal").Terminal
+			local lazygit = Terminal:new({
+				cmd = "lazygit",
+				direction = "float",
+				float_opts = { border = "curved" },
+				on_open = function(term)
+					vim.cmd("startinsert!")
+					vim.keymap.set("t", "<Esc>", "<Esc>", { buffer = term.bufnr, noremap = true })
+				end,
+				on_close = function(_)
+					vim.cmd("startinsert!")
+				end,
+				hidden = true,
+			})
+
+			function _LAZYGIT_TOGGLE()
+				lazygit:toggle()
+			end
+
+			local opts = { noremap = true, silent = true }
+			vim.keymap.set("n", "<leader>lg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
+			vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm direction=float<CR>", opts)
+			vim.keymap.set("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal<CR>", opts)
+			vim.keymap.set("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<CR>", opts)
+
+			-- ターミナルモードのキーマップ
+			function _G.set_terminal_keymaps()
+				local topts = { buffer = 0 }
+				vim.keymap.set("t", "<Esc><Esc>", [[<C-\><C-n>]], topts)
+				vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], topts)
+				vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], topts)
+			end
+
+			vim.api.nvim_create_autocmd("TermOpen", {
+				pattern = "term://*toggleterm#*",
+				callback = function()
+					_G.set_terminal_keymaps()
+				end,
+			})
+		end,
+	},
 }
