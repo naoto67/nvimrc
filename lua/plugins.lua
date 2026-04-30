@@ -416,27 +416,15 @@ return {
 
 	-- colorschema
 	{
-		-- {
-		-- 	"sainnhe/sonokai",
-		-- 	lazy = false,
-		-- 	priority = 1000,
-		-- 	config = function()
-		-- 		vim.g.sonokai_style = "maia"
-		-- 		vim.g.sonokai_enable_italic = true
-		-- 		vim.cmd.colorscheme("sonokai")
-		-- 	end,
-		-- },
-		{
-			"tanvirtin/monokai.nvim",
-			lazy = false,
-			priority = 1000,
-			config = function()
-				require("monokai").setup({
-					palette = require("monokai").soda,
-				})
-				vim.cmd.colorscheme("monokai_soda")
-			end,
-		},
+		"Mofiqul/dracula.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("dracula").setup({
+				transparent_bg = true,
+			})
+			vim.cmd.colorscheme("dracula")
+		end,
 	},
 
 	-- finder

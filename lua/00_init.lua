@@ -15,6 +15,7 @@ vim.o.scrolloff = 10
 vim.opt.helplang = "ja", "en"
 vim.opt.splitright = true
 vim.g.encoding = "UTF-8"
+vim.g.termguicolors = true
 
 vim.opt.clipboard:append({ "unnamedplus" })
 
